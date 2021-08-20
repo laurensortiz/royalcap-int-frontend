@@ -1,7 +1,5 @@
 export function getStrapiURL(path) {
-  return `${
-    process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
-  }${path}`
+  return `${process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'}${path}`
 }
 
 // Helper to make GET requests to Strapi
@@ -36,9 +34,7 @@ export async function getPageData(params, locale, preview) {
   const slug = params.slug.join('/')
   // Find the pages that match this slug
   const pagesData = await fetchAPI(
-    `/pages?slug=${slug}&_locale=${locale}&status=published${
-      preview ? '&status=draft' : ''
-    }`
+    `/pages?slug=${slug}&_locale=${locale}&status=published${preview ? '&status=draft' : ''}`
   )
 
   // Make sure we found something, otherwise return null

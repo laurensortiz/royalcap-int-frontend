@@ -1,13 +1,13 @@
-import { useEffect, useState, useRef } from "react"
-import { useRouter } from "next/router"
-import PropTypes from "prop-types"
-import Link from "next/link"
+import { useEffect, useState, useRef } from 'react'
+import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
+import Link from 'next/link'
 
-import Cookies from "js-cookie"
-import { MdExpandMore } from "react-icons/md"
-import WorldIcon from "./icons/world"
+import Cookies from 'js-cookie'
+import { MdExpandMore } from 'react-icons/md'
+import WorldIcon from './icons/world'
 
-import { useOnClickOutside } from "../utils/hooks"
+import { useOnClickOutside } from '../utils/hooks'
 
 const LocaleSwitch = ({ pageContext }) => {
   const isMounted = useRef(false)
@@ -19,7 +19,7 @@ const LocaleSwitch = ({ pageContext }) => {
   const handleLocaleChange = async (selectedLocale) => {
     // Persist the user's language preference
     // https://nextjs.org/docs/advanced-features/i18n-routing#leveraging-the-next_locale-cookie
-    Cookies.set("NEXT_LOCALE", selectedLocale)
+    Cookies.set('NEXT_LOCALE', selectedLocale)
     setLocale(selectedLocale)
   }
 
@@ -27,17 +27,13 @@ const LocaleSwitch = ({ pageContext }) => {
   useOnClickOutside(select, () => setShowing(false))
 
   useEffect(() => {
-    const localeCookie = Cookies.get("NEXT_LOCALE")
+    const localeCookie = Cookies.get('NEXT_LOCALE')
     if (!localeCookie) {
       handleLocaleChangeRef.current(router.locale)
     }
 
     const checkLocaleMismatch = async () => {
-      if (
-        !isMounted.current &&
-        localeCookie &&
-        localeCookie !== pageContext.locale
-      ) {
+      if (!isMounted.current && localeCookie && localeCookie !== pageContext.locale) {
         // Redirect to locale page if locale mismatch
         const localePage = getLocalizedPage(localeCookie, pageContext)
 
@@ -71,19 +67,13 @@ const LocaleSwitch = ({ pageContext }) => {
       </button>
       <div
         className={`w-full bg-white p-1 mt-1 shadow-lg rounded-md ${
-          showing ? "absolute" : "hidden"
+          showing ? 'absolute' : 'hidden'
         }`}
       >
         {pageContext.localizedPaths &&
           pageContext.localizedPaths.map(({ href, locale }) => {
             return (
-              <Link
-                href={href}
-                key={locale}
-                locale={locale}
-                role="option"
-                passHref
-              >
+              <Link href={href} key={locale} locale={locale} role="option" passHref>
                 <p
                   onClick={() => handleLocaleChange(locale)}
                   className="capitalize hover:bg-primary-50 hover:text-primary-600  cursor-pointer p-2 rounded-md text-center hover:text-primary-600"

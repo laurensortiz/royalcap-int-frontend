@@ -1,7 +1,7 @@
-import classNames from "classnames"
-import NextImage from "../elements/image"
-import Video from "../elements/video"
-import CustomLink from "../elements/custom-link"
+import classNames from 'classnames'
+import NextImage from '../elements/image'
+import Video from '../elements/video'
+import CustomLink from '../elements/custom-link'
 
 const FeatureRowsGroup = ({ data }) => {
   return (
@@ -10,10 +10,10 @@ const FeatureRowsGroup = ({ data }) => {
         <div
           className={classNames(
             // Common classes
-            "flex flex-col justify-start md:justify-between md:items-center gap-10",
+            'flex flex-col justify-start md:justify-between md:items-center gap-10',
             {
-              "lg:flex-row": index % 2 === 0,
-              "lg:flex-row-reverse": index % 2 === 1,
+              'lg:flex-row': index % 2 === 0,
+              'lg:flex-row-reverse': index % 2 === 1,
             }
           )}
           key={feature.id}
@@ -23,27 +23,20 @@ const FeatureRowsGroup = ({ data }) => {
             <h3 className="title">{feature.title}</h3>
             <p className="my-6">{feature.description}</p>
             <CustomLink link={feature.link}>
-              <div className="text-blue-600 with-arrow hover:underline">
-                {feature.link.text}
-              </div>
+              <div className="text-blue-600 with-arrow hover:underline">{feature.link.text}</div>
             </CustomLink>
           </div>
           {/* Media section */}
           <div className="w-full sm:9/12 lg:w-4/12 max-h-full">
             {/* Images */}
-            {feature.media.mime.startsWith("image") && (
+            {feature.media.mime.startsWith('image') && (
               <div className="w-full h-auto">
                 <NextImage media={feature.media} />
               </div>
             )}
             {/* Videos */}
-            {feature.media.mime.startsWith("video") && (
-              <Video
-                media={feature.media}
-                className="w-full h-auto"
-                autoPlay
-                controls={false}
-              />
+            {feature.media.mime.startsWith('video') && (
+              <Video media={feature.media} className="w-full h-auto" autoPlay controls={false} />
             )}
           </div>
         </div>

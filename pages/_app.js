@@ -1,15 +1,27 @@
-import App from "next/app"
-import Head from "next/head"
-import ErrorPage from "next/error"
-import { useRouter } from "next/router"
-import { DefaultSeo } from "next-seo"
-import { getStrapiMedia } from "utils/media"
-import { getGlobalData } from "utils/api"
-import "@/styles/index.css"
+import App from 'next/app'
+import Head from 'next/head'
+import ErrorPage from 'next/error'
+import { useRouter } from 'next/router'
+import { ThemeProvider, ServerStyleSheet } from 'styled-components'
+import { DefaultSeo } from 'next-seo'
+import { getStrapiMedia } from 'utils/media'
+import { getGlobalData } from 'utils/api'
+import GlobalStyles from 'GlobalStyles'
+import { defaultTheme } from 'theme'
+
+import '@/styles/index.css'
+import '@/styles/responsive.css'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
+import '../node_modules/font-awesome/css/font-awesome.min.css'
+import 'components/icons/elegant-icons/style.css'
+import '../node_modules/react-responsive-carousel/lib/styles/carousel.min.css'
+
+import ScrollToTop from 'helpers/ScrollToTop'
 
 const MyApp = ({ Component, pageProps }) => {
   // Extract the data we need
   const { global } = pageProps
+
   if (global == null) {
     return <ErrorPage statusCode={404} />
   }
@@ -29,6 +41,7 @@ const MyApp = ({ Component, pageProps }) => {
         description={metadata.metaDescription}
         openGraph={{
           images: Object.values(metadata.shareImage.formats).map((image) => {
+            image.url = undefined
             return {
               url: getStrapiMedia(image.url),
               width: image.width,
@@ -42,7 +55,12 @@ const MyApp = ({ Component, pageProps }) => {
         }}
       />
       {/* Display the content */}
-      <Component {...pageProps} />
+      <ThemeProvider theme={defaultTheme}>
+        <GlobalStyles />
+        <ScrollToTop>
+          <Component {...pageProps} />
+        </ScrollToTop>
+      </ThemeProvider>
     </>
   )
 }
