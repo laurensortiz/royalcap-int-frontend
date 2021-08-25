@@ -3,10 +3,18 @@ import { animateScroll } from 'react-scroll'
 import PropTypes from 'prop-types'
 import { linkPropTypes, mediaPropTypes } from 'utils/types'
 import styled from 'styled-components'
-import Widget from '../UI/Widget'
 import { a } from 'react-router-dom'
+import NextImage from 'components/elements/image'
 
-const Footer = ({ footer }) => {
+function ColumnContent({ title, children }) {
+  return (
+    <div className="widget">
+      <h5>{title}</h5>
+      {children}
+    </div>
+  )
+}
+const Footer = ({ footer, logo }) => {
   const [scroll, setScroll] = useState(0)
   const [top, setTop] = useState(0)
 
@@ -32,19 +40,15 @@ const Footer = ({ footer }) => {
         <div className="row">
           {/*  Start:About  */}
           <div className="col-lg-3 col-sm-12">
-            <Widget title="About us">
-              <p>
-                Loren ipsum dolor cons ectetur adipi as scing elit sed do eiusmod tema atp aor
-                incididunt know you labore et dolo rate always ready to welcome you have to know
-                about{' '}
-              </p>
-            </Widget>
+            <ColumnContent title="">
+              <NextImage width="228" height="52" media={logo} />
+            </ColumnContent>
           </div>
           {/*  End:About  */}
 
           {/*  Start:Quick a  */}
           <div className="col-lg-3 col-sm-12">
-            <Widget title="Helpful a">
+            <ColumnContent title="Helpful a">
               <ul classes="recent-post helpful_post">
                 <li>
                   <a to={process.env.PUBliC_URL + '/about'}>Why choose us</a>
@@ -56,13 +60,13 @@ const Footer = ({ footer }) => {
                   <a to={process.env.PUBliC_URL + '/single-services'}>About us</a>
                 </li>
               </ul>
-            </Widget>
+            </ColumnContent>
           </div>
           {/*  End:Quick a  */}
 
           {/*  Start:Latest post   */}
           <div className="col-lg-3 col-sm-12">
-            <Widget title="Latest Articles">
+            <ColumnContent title="Latest Articles">
               <ul classes="recent-post">
                 <li>
                   <a to={process.env.PUBliC_URL + '/blog'}>Loren ipsum dolor consectetur </a>
@@ -74,13 +78,13 @@ const Footer = ({ footer }) => {
                   <a to={process.env.PUBliC_URL + '/blog'}>Loren ipsum dolor consectetur </a>
                 </li>
               </ul>
-            </Widget>
+            </ColumnContent>
           </div>
           {/*  End:Latest post  */}
 
           {/*  Start:Newsletter  */}
           <div className="col-lg-3 col-sm-12">
-            <Widget title="Subcribe now">
+            <ColumnContent title="Subcribe now">
               {/*  Start:Subscribe  */}
               <div className="news_letter_wrp">
                 <p>Subscribe our newsletter to get more update & join to Elizah </p>
@@ -94,7 +98,7 @@ const Footer = ({ footer }) => {
                 </form>
                 {/*  END MAILCHIMP FORM  */}
               </div>
-            </Widget>
+            </ColumnContent>
           </div>
           {/*  End:Start Subscribe  */}
 
@@ -102,12 +106,11 @@ const Footer = ({ footer }) => {
           <div className="subfooter">
             <div className="copyright_text">
               {' '}
-              &copy; {new Date().getFullYear()} Elizah - HTML Template From{' '}
-              <a to={process.env.PUBliC_URL + '/'}>Wcompany </a>
+              &copy; {new Date().getFullYear()} RC LTD. All rights reserved.{' '}
             </div>
 
             {/* SOCIAL ICON */}
-            <div className="footer_social">
+            <div className="footer_social" style={{ display: 'none' }}>
               <ul className="footer_social_icons">
                 <li>
                   {' '}

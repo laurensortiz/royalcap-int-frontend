@@ -1,11 +1,10 @@
-import NextImage from '@/components/elements/image'
-import ImagePath from 'helpers/ImagePath'
+import MediaPath from 'helpers/mediaPath'
 import styled from 'styled-components'
 
 const Commodity = ({ thumb, title, description, link }) => {
   return (
     <div className="col-md-4 col-sm-12 about_v2_list">
-      <ImageCard className="about_img" imagePath={ImagePath(thumb.url)} />
+      <ImageCard className="about_img" imagePath={MediaPath(thumb.url)} />
       <div className="about_v2__para">
         <h5>{title}</h5>
         <p>{description} </p>
@@ -46,7 +45,7 @@ const ImageCard = styled.div`
   width: 100%;
   height: 210px;
   background: url(${(props) => props.imagePath}) no-repeat;
-  background-size: auto 100%;
+  background-size: cover;
 `
 
 export default CommoditiesIntroGroup

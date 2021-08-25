@@ -1,22 +1,33 @@
 import { useRouter } from 'next/router'
-import Hero from '@/components/sections/hero'
-import LargeVideo from '@/components/sections/large-video'
-import FeatureColumnsGroup from '@/components/sections/feature-columns-group'
-import FeatureRowsGroup from '@/components/sections/feature-rows-group'
-import BottomActions from '@/components/sections/bottom-actions'
-import TestimonialsGroup from '@/components/sections/testimonials-group'
 
-import HomeIntro from 'components/sections/HomeIntro'
-import CommoditiesIntroGroup from 'components/sections/CommoditiesIntroGroup'
 import Pricing from './sections/Pricing'
-
 import RichText from './sections/rich-text'
-
 import LeadForm from './sections/lead-form'
+
+import Hero from 'components/sections/hero'
+import LargeVideo from 'components/sections/large-video'
+import FeatureColumnsGroup from 'components/sections/feature-columns-group'
+import FeatureRowsGroup from 'components/sections/feature-rows-group'
+import BottomActions from 'components/sections/bottom-actions'
+import TestimonialsGroup from 'components/sections/testimonials-group'
+import HomeIntro from 'components/sections/HomeIntro'
+import HomeSlider from 'components/sections/HomeSlider'
+import CommoditiesIntroGroup from 'components/sections/CommoditiesIntroGroup'
+import InternalHero from 'components/sections/InternalHero'
+import PageIntro from 'components/sections/PageIntro'
+import ProductFeature from 'components/sections/ProductFeature'
+import OurPlatformFeature from 'components/sections/OurPlatformFeature'
+import BrokerRegistrationFeature from 'components/sections/BrokerRegistrationFeature'
 
 // Map Strapi sections to section components
 const sectionComponents = {
+  'sections.product-feature': ProductFeature,
+  'sections.open-account-feature': BrokerRegistrationFeature,
+  'sections.our-platform': OurPlatformFeature,
   'sections.home-intro': HomeIntro,
+  'sections.page-intro': PageIntro,
+  'sections.home-slider': HomeSlider,
+  'sections.internal-hero': InternalHero,
   'sections.commodities-intro': CommoditiesIntroGroup,
   'sections.hero': Hero,
   'sections.large-video': LargeVideo,
@@ -31,9 +42,6 @@ const sectionComponents = {
 
 // Display a section individually
 const Section = ({ sectionData }) => {
-  console.log('[=====  test  =====>')
-  console.log(sectionData)
-  console.log('<=====  /test  =====]')
   // Prepare the component
   const SectionComponent = sectionComponents[sectionData.__component]
 

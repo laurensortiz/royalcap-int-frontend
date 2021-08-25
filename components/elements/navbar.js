@@ -1,19 +1,21 @@
-import { useState } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
-import { getButtonAppearance } from 'utils/button'
-import { mediaPropTypes, linkPropTypes, buttonLinkPropTypes } from 'utils/types'
 import { MdMenu } from 'react-icons/md'
 import MobileNavMenu from './mobile-nav-menu'
-import ButtonLink from './button-link'
 import CustomLink from './custom-link'
 import LocaleSwitch from '../locale-switch'
+import NextImage from 'components/elements/image'
 
-const Navbar = ({ navbar, pageContext }) => {
+import { Link } from 'library'
+
+const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
   const router = useRouter()
   const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false)
+
+  const loginButton = globalLinks.find((link) => link.slug === 'login')
+  const createAccountButton = globalLinks.find((link) => link.slug === 'createAccount')
 
   return (
     <>
@@ -23,18 +25,38 @@ const Navbar = ({ navbar, pageContext }) => {
           <div className="container flex flex-row items-center justify-between">
             {/* Content aligned to the left */}
             <div className="flex flex-row items-center">
+              <Logo>
+                <Link href="/">
+                  <NextImage width="228" height="52" media={logo} />
+                </Link>
+              </Logo>
+
               {/* List of links on desktop */}
               <ul className="hidden list-none md:flex flex-row gap-4 items-baseline">
                 {navbar.links.map((navLink) => (
                   <li key={navLink.id}>
                     <CustomLink link={navLink} locale={router.locale}>
-                      <div className="hover:text-gray-900 px-2 py-1">{navLink.text}</div>
+                      <div className="px-2 py-1">{navLink.text}</div>
                     </CustomLink>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="flex">
+              {/* CTA button on desktop */}
+              <ActionContainer>
+                {loginButton && (
+                  <Link href={loginButton.url} isButton={true}>
+                    {loginButton.text}
+                  </Link>
+                )}
+
+                {createAccountButton && (
+                  <Link href={createAccountButton.url} isButton={true} ghost>
+                    {createAccountButton.text}
+                  </Link>
+                )}
+              </ActionContainer>
               {/* Locale Switch Mobile */}
               {pageContext.localizedPaths && (
                 <div className="md:hidden">
@@ -45,16 +67,7 @@ const Navbar = ({ navbar, pageContext }) => {
               <button onClick={() => setMobileMenuIsShown(true)} className="p-1 block md:hidden">
                 <MdMenu className="h-8 w-auto" />
               </button>
-              {/* CTA button on desktop */}
-              {navbar.button && (
-                <div className="hidden md:block">
-                  <ButtonLink
-                    button={navbar.button}
-                    appearance={getButtonAppearance(navbar.button.type, 'light')}
-                    compact
-                  />
-                </div>
-              )}
+
               {/* Locale Switch Desktop */}
               {pageContext.localizedPaths && (
                 <div className="hidden md:block">
@@ -75,24 +88,32 @@ const Navbar = ({ navbar, pageContext }) => {
 }
 
 const MenuWrapper = styled.div`
-  background-color: #fff;
+  background-color: ${(props) => props.theme.colors.gray101};
   position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 9999;
   box-shadow: 0 3px 6px rgba(54, 54, 54, 0.08);
+
+  a {
+    color: #fff;
+    font-weight: 600;
+  }
 `
 
-// Navbar.propTypes = {
-//   navbar: PropTypes.shape({
-//     logo: PropTypes.shape({
-//       image: mediaPropTypes,
-//       url: PropTypes.string,
-//     }),
-//     links: PropTypes.arrayOf(linkPropTypes),
-//     button: buttonLinkPropTypes,
-//   }),
-//   initialLocale: PropTypes.string,
-// }
+const ActionContainer = styled.div`
+  display: flex;
+
+  a {
+    font-size: 0.8rem;
+    height: 32px;
+    margin: 0 5px;
+    padding: 10px;
+  }
+`
+
+const Logo = styled.div`
+  float: left;
+`
 
 export default Navbar

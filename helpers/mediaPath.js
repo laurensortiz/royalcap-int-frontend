@@ -1,7 +1,7 @@
 import { getStrapiMedia } from 'utils/media'
 
-const ImagePath = (url) => {
+const MediaPath = (url) => {
   return getStrapiMedia(url)
 }
 
-export default ImagePath
+export default MediaPath

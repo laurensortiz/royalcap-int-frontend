@@ -3,7 +3,7 @@ import reset from 'styled-reset'
 
 const fonts = css`
   @font-face {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
   ${fonts}
 
   :root {
-    --font-normal: 'Poppins', sans-serif;
+    --font-normal: 'Inter', sans-serif;
     --font-special: Trebuchet MS, sans-serif;
     --column-width: 275px;
     --app-menu-height: 72px;
@@ -73,7 +73,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
 
   body {
     font-size: 14px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: transparent;
     line-height: 1.5;
     font-weight: 400;
@@ -116,7 +116,6 @@ const GlobalStyle = createGlobalStyle`${() => css`
   h5 {
     font-weight: 700;
     color: #333;
-    font-family: 'Poppins', sans-serif;
   }
 
   h5,
@@ -130,7 +129,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
   }
 
   h3 {
-    font-size: 40px;
+    font-size: 22px;
     line-height: 28px;
   }
 
@@ -151,8 +150,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
 
   a,
   a:hover,
-  a:focus,
-  .btn:focus {
+  a:focus {
     -webkit-text-decoration: none;
     -moz-text-decoration: none;
     -ms-text-decoration: none;
@@ -179,11 +177,15 @@ const GlobalStyle = createGlobalStyle`${() => css`
     -o-text-decoration: none;
     text-decoration: none;
     outline: none;
-    color: ${(props) => props.theme.colors.yellowb89};
+    color: ${(props) => props.theme.colors.blue017};
   }
 
   a {
-    color: ${(props) => props.theme.colors.yellowb89};
+    color: ${(props) => props.theme.colors.blue017};
+
+    &:focus {
+      color: #fff;
+    }
   }
 
   .btn.btn-fill {
@@ -228,7 +230,9 @@ const GlobalStyle = createGlobalStyle`${() => css`
     text-align: center;
   }
 
-  .base-header h3 {
+  .base-header h3,
+  .base-header h2,
+  .base-header h1 {
     letter-spacing: 1px;
     position: relative;
     color: #212121;
@@ -238,7 +242,17 @@ const GlobalStyle = createGlobalStyle`${() => css`
     margin-bottom: 20px;
   }
 
-  .base-header h3::after {
+  .base-header h2 {
+    font-size: 28px;
+  }
+
+  .base-header h3 {
+    font-size: 20px;
+  }
+
+  .base-header h3::after,
+  .base-header h2::after,
+  .base-header h1::after {
     position: absolute;
     content: '';
     background: #b89841;
@@ -1049,6 +1063,8 @@ const GlobalStyle = createGlobalStyle`${() => css`
     transition: all 0.3s ease-in-out;
     border: 1px dashed #bfb4b4;
     padding: 10px;
+    position: relative;
+    top: 14px;
   }
 
   .about-section .about_list h5 {
@@ -3759,14 +3775,6 @@ const GlobalStyle = createGlobalStyle`${() => css`
     float: right;
   }
 
-  .slides_wrapper_v2 .slider-1 .col-md-6 {
-    margin-left: 20%;
-    text-align: center;
-    max-width: 60%;
-    margin-top: -75px;
-    flex: 0 0 60%;
-  }
-
   .slides_wrapper_v2 .col-md-6 {
     max-width: 58%;
     flex: 0 0 58%;
@@ -3874,7 +3882,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
     padding-bottom: 18px;
   }
 
-  .base-header2 h3 {
+  .base-header2 h1 {
     text-transform: capitalize;
     padding-bottom: 20px;
     letter-spacing: 2px;
@@ -3896,7 +3904,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
     color: #b89841;
   }
 
-  .base-header2 h3::after {
+  .base-header2 h1::after {
     position: absolute;
     content: '';
     background: #b89841;
@@ -4978,7 +4986,6 @@ const GlobalStyle = createGlobalStyle`${() => css`
     display: block;
     padding: 8px 0;
     color: #222;
-    font-family: 'Poppins', sans-serif;
   }
 
   .offcanvasNavigation > ul li > a:hover {
@@ -5100,6 +5107,30 @@ const GlobalStyle = createGlobalStyle`${() => css`
 
   .gray-bg {
     background-color: #f6f8fa;
+  }
+
+  //button[type='primary'] {
+  //  background: #b89841;
+  //  color: #fff;
+  //  border-radius: 0.375rem;
+  //
+  //  &:hover {
+  //    background-color: #333;
+  //  }
+  //}
+
+  .btn {
+    &-primary {
+      background: ${(props) => props.theme.colors.blue017};
+      color: #fff;
+    }
+  }
+  .slick-slide {
+    position: relative;
+  }
+  .slides_wrapper {
+    overflow: hidden;
+    background-color: #000;
   }
 `}`
 

@@ -72,7 +72,7 @@ export const defaultTheme = {
     // Final colors
     yellowb89: '#B89841',
     gray102: '#10252e',
-
+    gray101: '#10131B',
     gray607: '#607A8A',
     gray435: '#435363',
     gray4d6: '#4D6373',
@@ -83,6 +83,7 @@ export const defaultTheme = {
     rede52: '#E52A07',
     redab3: '#AB3013',
     blue017: '#0170C7',
+    blue105: '#105fcc',
   },
 
   shadows: {

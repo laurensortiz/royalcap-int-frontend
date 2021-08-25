@@ -10,13 +10,15 @@
     "lint:fix": "next lint --fix"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.3",
     "@tailwindcss/typography": "^0.4.1",
     "animate.css": "^4.1.1",
-    "antd": "^4.16.11",
+    "antd": "^4.16.13",
     "babel-plugin-styled-components": "^1.13.2",
     "bootstrap": "4.6.0",
     "classnames": "^2.2.6",
     "cookie": "^0.4.1",
+    "dangerously-set-html-content": "^1.0.8",
     "date-fns": "2.14.0",
     "font-awesome": "^4.7.0",
     "formik": "^2.2.6",
