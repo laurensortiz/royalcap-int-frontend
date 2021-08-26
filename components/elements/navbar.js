@@ -98,6 +98,7 @@ const MenuWrapper = styled.div`
   a {
     color: #fff;
     font-weight: 600;
+    font-size: 0.8rem;
   }
 `
 

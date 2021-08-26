@@ -73,6 +73,7 @@ export const defaultTheme = {
     yellowb89: '#B89841',
     gray102: '#10252e',
     gray101: '#10131B',
+    gray010: '#010914',
     gray607: '#607A8A',
     gray435: '#435363',
     gray4d6: '#4D6373',
@@ -80,10 +81,25 @@ export const defaultTheme = {
     gray8ea: '#8EA4AE',
     grayde6: '#D6E7E7',
     grayebf: '#EBF3F3',
+    grayf2f: '#F2F2F5',
     rede52: '#E52A07',
     redab3: '#AB3013',
     blue017: '#0170C7',
     blue105: '#105fcc',
+
+    // Market
+    eqbg: '#DB9C26',
+    eqcorner: '#FF7F00',
+    fubg: '#340640',
+    fucorner: '#9D00FF',
+    cobg: '#8025DB',
+    cocorner: '#AC6FE8',
+    fxobg: '#467D0F',
+    fxocorner: '#55FF02',
+    cfdbg: '#DB4F25',
+    cfdcorner: '#BD290C',
+    etfbg: '#4b6da0',
+    etfcorner: '#3796d6',
   },
 
   shadows: {

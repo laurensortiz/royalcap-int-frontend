@@ -157,7 +157,7 @@ const FooterWrapper = styled.div`
   float: left;
   width: 100%;
   color: #fff;
-  background: #252525;
+  background: ${(props) => props.theme.colors.gray010};
   padding-top: 42px;
   .footer_middle {
     padding-top: 42px;

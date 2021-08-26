@@ -237,9 +237,8 @@ const GlobalStyle = createGlobalStyle`${() => css`
     position: relative;
     color: #212121;
     line-height: 32px;
-    font-size: 36px;
-    text-transform: capitalize;
-    margin-bottom: 20px;
+    font-size: 2.125rem;
+    line-height: 2.75rem;
   }
 
   .base-header h2 {
@@ -1027,11 +1026,13 @@ const GlobalStyle = createGlobalStyle`${() => css`
     padding-bottom: 10px;
   }
 
-  .about-section .base-header h3 {
+  .about-section .base-header h3,
+  .about-section .base-header h1 {
     margin-top: 0px;
   }
 
-  .about-section .base-header h3::after {
+  .about-section .base-header h3::after,
+  .about-section .base-header h1::after {
     left: 54px;
   }
 
@@ -1061,7 +1062,6 @@ const GlobalStyle = createGlobalStyle`${() => css`
     -moz-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    border: 1px dashed #bfb4b4;
     padding: 10px;
     position: relative;
     top: 14px;
@@ -3883,13 +3883,12 @@ const GlobalStyle = createGlobalStyle`${() => css`
   }
 
   .base-header2 h1 {
-    text-transform: capitalize;
     padding-bottom: 20px;
     letter-spacing: 2px;
     position: relative;
     color: #212121;
-    line-height: 32px;
-    font-size: 36px;
+    font-size: 2.125rem;
+    line-height: 2.75rem;
   }
 
   .base-header2 small {
@@ -5119,6 +5118,15 @@ const GlobalStyle = createGlobalStyle`${() => css`
   //  }
   //}
 
+  .description {
+    padding: 30px 0;
+
+    p {
+      font-size: 1.1875rem;
+      line-height: 1.6875rem;
+    }
+  }
+
   .btn {
     &-primary {
       background: ${(props) => props.theme.colors.blue017};
@@ -5131,6 +5139,93 @@ const GlobalStyle = createGlobalStyle`${() => css`
   .slides_wrapper {
     overflow: hidden;
     background-color: #000;
+  }
+
+  section.bg-gray {
+    background-color: ${(props) => props.theme.colors.grayf2f};
+  }
+
+  /* ------------------------------------------
+        MarketIcon 
+-----------------------------------------------*/
+  .stock-market-icon {
+    width: 50px;
+    height: 26px;
+    background-color: ${(props) => props.theme.colors.gray010};
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+
+    span {
+      padding: 5px;
+      font-size: 0.8rem;
+      color: #fff;
+      font-weight: 400;
+      font-style: normal;
+      display: inline-block;
+      text-align: left;
+      width: 100%;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      width: 85%;
+      height: 50px;
+      position: absolute;
+      background-color: ${(props) => props.theme.colors.gray102};
+      top: 3px;
+      left: 70%;
+      transform: rotate(130deg);
+    }
+
+    &.smi-eq {
+      background-color: ${(props) => props.theme.colors.eqbg};
+
+      &:after {
+        background-color: ${(props) => props.theme.colors.eqcorner};
+      }
+    }
+
+    &.smi-fu {
+      background-color: ${(props) => props.theme.colors.fubg};
+
+      &:after {
+        background-color: ${(props) => props.theme.colors.fucorner};
+      }
+    }
+
+    &.smi-co {
+      background-color: ${(props) => props.theme.colors.cobg};
+
+      &:after {
+        background-color: ${(props) => props.theme.colors.cocorner};
+      }
+    }
+
+    &.smi-fxo {
+      background-color: ${(props) => props.theme.colors.fxobg};
+
+      &:after {
+        background-color: ${(props) => props.theme.colors.fxocorner};
+      }
+    }
+
+    &.smi-cfd {
+      background-color: ${(props) => props.theme.colors.cfdbg};
+
+      &:after {
+        background-color: ${(props) => props.theme.colors.cfdcorner};
+      }
+    }
+
+    &.smi-etf {
+      background-color: ${(props) => props.theme.colors.etfbg};
+
+      &:after {
+        background-color: ${(props) => props.theme.colors.etfcorner};
+      }
+    }
   }
 `}`
 

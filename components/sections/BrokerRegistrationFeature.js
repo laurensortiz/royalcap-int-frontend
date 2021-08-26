@@ -4,12 +4,7 @@ import styled from 'styled-components'
 import { Row, Col, Layout, Link } from 'library'
 import MediaPath from 'helpers/mediaPath'
 
-const { Content } = Layout
-
 const BrokerRegistrationFeature = ({ data }) => {
-  console.log('[=====  data ss =====>')
-  console.log(data)
-  console.log('<=====  /data  =====]')
   const isSliderImage = data.bg.mime === 'image/jpeg'
   const videoEl = useRef(null)
 
@@ -40,29 +35,27 @@ const BrokerRegistrationFeature = ({ data }) => {
           />
         )}
         <div className="slider_data_tb">
-          <div className="slider_data_tbcell">
-            <Content>
-              <Row justify="center">
-                <Col xs={18}>
-                  <div className="about_list">
-                    <div className="base-header2">
-                      <h1>{data.title}</h1>
-                    </div>
-                    {data.description && (
-                      <div className="text-xl mb-6 text-xl-center">
-                        <Markdown className="text-xl">{data.description}</Markdown>
-                      </div>
-                    )}
-
-                    <LinkWrapper>
-                      <Link href={data.linkUrl} isButton={true} ghostPrimary>
-                        {data.linkText}
-                      </Link>
-                    </LinkWrapper>
+          <div className="container">
+            <Row align="middle" justify="start">
+              <Col xs={24} sm={15}>
+                <div className="about_list">
+                  <div className="base-header">
+                    <h1>{data.title}</h1>
                   </div>
-                </Col>
-              </Row>
-            </Content>
+                  {data.description && (
+                    <div className="text-xl mb-6 text-xl-center">
+                      <RichText className="text-xl">{data.description}</RichText>
+                    </div>
+                  )}
+
+                  <LinkWrapper>
+                    <Link href={data.linkUrl} isButton={true} ghostPrimary>
+                      {data.linkText}
+                    </Link>
+                  </LinkWrapper>
+                </div>
+              </Col>
+            </Row>
           </div>
         </div>
       </SingleSlider>
@@ -74,6 +67,11 @@ const Section = styled.section`
   padding: 0;
   background-color: #000;
   overflow: hidden;
+  text-align: left;
+
+  .about_list {
+    padding: 80px 0;
+  }
 `
 
 const SingleSlider = styled.div`
@@ -83,18 +81,19 @@ const SingleSlider = styled.div`
   position: relative;
   width: 100%;
   height: 600px;
-  over
+  color: #fff;
 
   .slider_data_tb {
     background-color: rgba(0, 0, 0, 0.4);
     position: absolute;
     z-index: 1;
-    wi
+    width: 100%;
+    height: 100%;
+    padding: 30px;
   }
 
-  h2 {
-    font-size: 44px;
-    line-height: 3.375rem;
+  h1 {
+    color: #fff;
   }
 `
 
@@ -112,16 +111,20 @@ const VideoSlider = styled.video`
 `
 const LinkWrapper = styled.div`
   text-align: center;
+  padding: 30px 0;
 `
 
 const RichText = styled(Markdown)`
+  text-align: left;
+  margin: 50px 0;
   span,
   strong {
     color: ${(props) => props.theme.colors.yellowb89};
   }
   p {
-    font-size: 1em;
+    font-size: 1rem;
     line-height: 1.8em;
+    margin: 10px 0;
   }
 `
 

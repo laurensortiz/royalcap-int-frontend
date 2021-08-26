@@ -15,8 +15,8 @@ const HomeIntro = ({ data }) => {
                   {data.title}
                 </h1>
               </div>
-              <div className="text-xl mb-6 text-xl-center">
-                <RichText className="text-xl">{data.description}</RichText>
+              <div className="description text-xl-center">
+                <Markdown className="text-xl">{data.description}</Markdown>
               </div>
             </div>
           </div>
@@ -34,12 +34,5 @@ const HomeIntro = ({ data }) => {
     </section>
   )
 }
-
-const RichText = styled(Markdown)`
-  p {
-    font-size: 1em;
-    line-height: 1.8em;
-  }
-`
 
 export default HomeIntro

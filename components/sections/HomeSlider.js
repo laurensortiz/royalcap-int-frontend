@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import Markdown from 'react-markdown'
-import Link from 'next/link'
+import { Link } from 'library'
 
 import SlickSlider from '../UI/Carousel/slick'
 import styled from 'styled-components'
@@ -95,11 +95,13 @@ const Slider = ({ data }) => {
                           <div className="col-md-8 col-sm-12">
                             <RichText>{item.title}</RichText>
                             <RichText>{item.description}</RichText>
-                            <div className="slider_btn">
+                            <div className="">
                               {item.btnLink && (
-                                <Link href={item.btnLink} className="slider_btn_one">
-                                  {item.btnText}
-                                </Link>
+                                <LinkWrapper>
+                                  <Link href={item.btnLink} isButton={true} ghost>
+                                    {item.btnText}
+                                  </Link>
+                                </LinkWrapper>
                               )}
                             </div>
                           </div>
@@ -116,6 +118,11 @@ const Slider = ({ data }) => {
     </div>
   )
 }
+
+const LinkWrapper = styled.div`
+  font-size: 1rem;
+  padding: 20px 0;
+`
 
 const SingleSlider = styled.div`
   background: url(${(props) => props.imagePath}) no-repeat;

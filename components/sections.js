@@ -18,10 +18,14 @@ import PageIntro from 'components/sections/PageIntro'
 import ProductFeature from 'components/sections/ProductFeature'
 import OurPlatformFeature from 'components/sections/OurPlatformFeature'
 import BrokerRegistrationFeature from 'components/sections/BrokerRegistrationFeature'
+import ProductListFeature from 'components/sections/ProductListFeature'
+import BankSlider from 'components/sections/BankSlider'
 
 // Map Strapi sections to section components
 const sectionComponents = {
+  'sections.bank-slider': BankSlider,
   'sections.product-feature': ProductFeature,
+  'sections.product-list-feature': ProductListFeature,
   'sections.open-account-feature': BrokerRegistrationFeature,
   'sections.our-platform': OurPlatformFeature,
   'sections.home-intro': HomeIntro,
