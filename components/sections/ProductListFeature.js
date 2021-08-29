@@ -37,15 +37,18 @@ const ProductListFeature = ({ data }) => {
             )
           })}
         </Row>
-        <Row justify="center">
-          <Col>
-            <LinkWrapper>
-              <Link href={data.linkUrl} isButton={true} ghostPrimary>
-                {data.linkText}
-              </Link>
-            </LinkWrapper>
-          </Col>
-        </Row>
+        {data.linkUrl && (
+          <Row justify="center">
+            <Col>
+              <LinkWrapper>
+                <Link href={data.linkUrl} isButton={true} ghostPrimary>
+                  {data.linkText}
+                </Link>
+              </LinkWrapper>
+            </Col>
+          </Row>
+        )}
+
         {/* row */}
       </div>
       {/* container */}

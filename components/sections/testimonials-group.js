@@ -1,7 +1,7 @@
-import classNames from "classnames"
-import { useState } from "react"
-import NextImage from "../elements/image"
-import CustomLink from "../elements/custom-link"
+import classNames from 'classnames'
+import { useState } from 'react'
+import NextImage from '../elements/image'
+import CustomLink from '../elements/custom-link'
 
 const TestimonialsGroup = ({ data }) => {
   // Only show one testimonial at a time
@@ -13,9 +13,7 @@ const TestimonialsGroup = ({ data }) => {
       <h2 className="title mb-4">{data.title}</h2>
       <p className="text-gray-700 mb-4">{data.description}</p>
       <CustomLink link={data.link}>
-        <span className="with-arrow text-blue-700 hover:underline">
-          {data.link.text}
-        </span>
+        <span className="with-arrow text-blue-700 hover:underline">{data.link.text}</span>
       </CustomLink>
       {/* Current testimonial card */}
       <div className="max-w-5xl w-8/12 sm:w-8/12 bg-white shadow-md sm:shadow-xl mx-auto flex flex-col sm:flex-row mt-10 text-left">
@@ -24,25 +22,15 @@ const TestimonialsGroup = ({ data }) => {
         </div>
         <div className="px-4 py-4 sm:px-12 sm:pt-12 sm:pb-4 flex flex-col justify-between">
           <div>
-            <NextImage
-              width="120"
-              height="33"
-              media={selectedTestimonial.logo}
-            />
-            <p className="italic mb-6">
-              &quot;{selectedTestimonial.text}&quot;
-            </p>
-            <p className="font-bold text-base sm:text-sm">
-              {selectedTestimonial.authorName}
-            </p>
-            <p className="text-base sm:text-sm">
-              {selectedTestimonial.authorTitle}
-            </p>
+            <NextImage width="120" height="33" media={selectedTestimonial.logo} />
+            <p className="italic mb-6">&quot;{selectedTestimonial.text}&quot;</p>
+            <p className="font-bold text-base sm:text-sm">{selectedTestimonial.authorName}</p>
+            <p className="text-base sm:text-sm">{selectedTestimonial.authorTitle}</p>
           </div>
           <CustomLink
             link={{
               url: selectedTestimonial.link,
-              text: "",
+              text: '',
               newTab: false,
               id: 0,
             }}
@@ -61,10 +49,10 @@ const TestimonialsGroup = ({ data }) => {
               onClick={() => setSelectedTestimonialIndex(index)}
               className={classNames(
                 // Common classes
-                "rounded-full h-3 w-3",
+                'rounded-full h-3 w-3',
                 {
-                  "bg-gray-500": index !== selectedTestimonialIndex,
-                  "bg-primary-600": index === selectedTestimonialIndex,
+                  'bg-gray-500': index !== selectedTestimonialIndex,
+                  'bg-primary-600': index === selectedTestimonialIndex,
                 }
               )}
               key={testimonial.id}

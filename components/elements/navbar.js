@@ -34,7 +34,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
               {/* List of links on desktop */}
               <ul className="hidden list-none md:flex flex-row gap-4 items-baseline">
                 {navbar.links.map((navLink) => (
-                  <li key={navLink.id}>
+                  <li key={navLink.id} className="menu-item">
                     <CustomLink link={navLink} locale={router.locale}>
                       <div className="px-2 py-1">{navLink.text}</div>
                     </CustomLink>
@@ -95,10 +95,17 @@ const MenuWrapper = styled.div`
   z-index: 9999;
   box-shadow: 0 3px 6px rgba(54, 54, 54, 0.08);
 
-  a {
-    color: #fff;
-    font-weight: 600;
-    font-size: 0.8rem;
+  .menu-item {
+    a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.8rem;
+
+      &:hover,
+      &:active {
+        color: ${(props) => props.theme.colors.blue017};
+      }
+    }
   }
 `
 
@@ -109,7 +116,7 @@ const ActionContainer = styled.div`
     font-size: 0.8rem;
     height: 32px;
     margin: 0 5px;
-    padding: 10px;
+    padding: 8px;
   }
 `
 

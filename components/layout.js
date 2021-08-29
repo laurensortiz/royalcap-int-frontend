@@ -13,6 +13,9 @@ const Layout = ({ children, global, pageContext }) => {
   const [bannerIsShown, setBannerIsShown] = useState(notificationBanner.bannerIsShown || false)
   return (
     <div className="flex flex-col justify-between min-h-screen">
+      <WidgetContainer>
+        <Widget />
+      </WidgetContainer>
       {/* Aligned to the top */}
       <div className="flex-1">
         {notificationBanner && bannerIsShown && (
@@ -30,9 +33,7 @@ const Layout = ({ children, global, pageContext }) => {
       {/* Aligned to the bottom */}
 
       {footerDisclaimer && <FooterDisclaimer data={footerDisclaimer} />}
-      <WidgetContainer>
-        <Widget />
-      </WidgetContainer>
+
       <Footer logo={navbar.logo} footer={footer} />
     </div>
   )

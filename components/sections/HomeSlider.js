@@ -130,14 +130,15 @@ const SingleSlider = styled.div`
   text-align: center;
 
   .slider_item_tb {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(16, 19, 27, 0.6);
     position: absolute;
     z-index: 1;
   }
 
   h2 {
-    font-size: 44px;
+    font-size: 2.75rem;
     line-height: 3.375rem;
+    font-weight: 400;
   }
 `
 
@@ -149,16 +150,12 @@ const VideoSlider = styled.video`
   top: 0;
   left: 0;
   background-size: cover;
-  opacity: 0.9;
+  opacity: 0.4;
   z-index: 0;
   background-color: #000;
 `
 
 const RichText = styled(Markdown)`
-  span,
-  strong {
-    color: ${(props) => props.theme.colors.yellowb89};
-  }
   p {
     font-size: 1em;
     line-height: 1.8em;

@@ -1,11 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-function List({children, classes}) {
-    return (
-        <ul className={classes}>
-            {children}
-        </ul>
-    );
+function List({ children, classes }) {
+  return <ul className={classes}>{children}</ul>
 }
 
-export default List;
+export default List

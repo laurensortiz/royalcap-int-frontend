@@ -52,11 +52,13 @@ const Pricing = ({ data }) => {
                 </li>
               ))}
             </FeatureList>
-            <ButtonContainer>
-              <Link href={plan.btnLink.url} isButton={true}>
-                {plan.btnLink.text}
-              </Link>
-            </ButtonContainer>
+            {plan.btnLink.url && (
+              <ButtonContainer>
+                <Link href={plan.btnLink.url} isButton={true}>
+                  {plan.btnLink.text}
+                </Link>
+              </ButtonContainer>
+            )}
           </div>
         ))}
       </div>

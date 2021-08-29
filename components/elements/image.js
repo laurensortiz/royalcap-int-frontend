@@ -19,7 +19,7 @@ const NextImage = ({ media, ...props }) => {
   return (
     <Image
       loader={loader}
-      layout="responsive"
+      layout={props.layout || 'responsive'}
       width={media.width}
       height={media.height}
       objectFit="contain"

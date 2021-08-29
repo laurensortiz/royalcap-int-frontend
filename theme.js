@@ -8,9 +8,11 @@ export const defaultTheme = {
   borderRadius: '8px',
 
   breakpoints: {
-    s: '600px',
-    m: '1280px',
-    l: '1920px',
+    s: '576px',
+    m: '768px',
+    l: '992px',
+    x: '1200px',
+    xx: '1600px',
   },
 
   spacings: {

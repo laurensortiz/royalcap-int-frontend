@@ -3,7 +3,7 @@ import reset from 'styled-reset'
 
 const fonts = css`
   @font-face {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
   ${fonts}
 
   :root {
-    --font-normal: 'Inter', sans-serif;
+    --font-normal: 'Titillium Web', sans-serif;
     --font-special: Trebuchet MS, sans-serif;
     --column-width: 275px;
     --app-menu-height: 72px;
@@ -73,7 +73,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
 
   body {
     font-size: 14px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     background: transparent;
     line-height: 1.5;
     font-weight: 400;
@@ -96,6 +96,16 @@ const GlobalStyle = createGlobalStyle`${() => css`
     background-color: ${(props) => props.theme.colors.yellowb89};
   }
 
+  .main-section {
+    background-color: #fff;
+  }
+
+  .img-responsive {
+    img {
+      max-width: 100%;
+    }
+  }
+
   /* ## Global Class ## */
 
   p {
@@ -114,7 +124,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
   h3,
   h4,
   h5 {
-    font-weight: 700;
+    font-weight: 400;
     color: #333;
   }
 

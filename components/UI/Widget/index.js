@@ -54,7 +54,7 @@ function Widget() {
         "proName": "NYMEX:CL1!"
       }
   ],
-  "colorTheme": "light",
+  "colorTheme": "dark",
   "isTransparent": false,
   "displayMode": "adaptive",
   "locale": "en"

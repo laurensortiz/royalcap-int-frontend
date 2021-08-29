@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Row, Col, Layout } from 'library'
 import { GoldOutlined, DollarCircleOutlined, SlidersOutlined } from '@ant-design/icons'
 
@@ -18,7 +18,7 @@ const icon = (name) => {
 
 const ProductFeature = ({ data }) => {
   return (
-    <ProductFeatureSection>
+    <ProductFeatureSection isHome={data.isHome || false}>
       <Content>
         <RowWrapper justify="center" gutter={[16, 24]} type="flux">
           {data.productFeature.map((productFeature) => (
@@ -87,9 +87,15 @@ const Description = styled.p`
   margin: 10px 0;
 `
 
-const ProductFeatureSection = styled.div`
-  margin-top: -100px;
+const ProductFeatureSection = styled.section`
+  margin-top: ${(props) => (props.isHome ? '-100px' : '0')};
   margin-bottom: 50px;
+
+  ${(props) =>
+    props.isHome &&
+    css`
+      padding: 0;
+    `}
 `
 
 export default ProductFeature
