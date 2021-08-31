@@ -1,10 +1,9 @@
-import Markdown from 'react-markdown'
 import styled from 'styled-components'
-import { Row, Col, Link } from 'library'
+import { Row, Col, Link, Markdown } from 'library'
 
 const ProductListFeature = ({ data }) => {
   return (
-    <Section className="section bg-gray">
+    <Section className={`section ${data.bgClass || ''}`}>
       <div className="container text-left">
         <Row justify="center">
           <Col>
@@ -14,9 +13,11 @@ const ProductListFeature = ({ data }) => {
                 {data.title}
               </h1>
             </div>
-            <div className="text-xl mb-6">
-              <Markdown className="description">{data.description}</Markdown>
-            </div>
+            {data.description && (
+              <div className="text-xl mb-6">
+                <Markdown className="description">{data.description}</Markdown>
+              </div>
+            )}
           </Col>
         </Row>
         <Row gutter={[16, 16]}>

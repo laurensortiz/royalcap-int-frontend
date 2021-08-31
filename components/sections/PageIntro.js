@@ -1,5 +1,5 @@
-import Markdown from 'react-markdown'
 import styled from 'styled-components'
+import { Markdown } from 'library'
 const PageIntro = ({ data }) => {
   return (
     <section className="section">

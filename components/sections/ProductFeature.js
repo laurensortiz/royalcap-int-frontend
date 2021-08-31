@@ -18,7 +18,7 @@ const icon = (name) => {
 
 const ProductFeature = ({ data }) => {
   return (
-    <ProductFeatureSection isHome={data.isHome || false}>
+    <ProductFeatureSection isHome={data.isHome || false} className={data.bgClass}>
       <Content>
         <RowWrapper justify="center" gutter={[16, 24]} type="flux">
           {data.productFeature.map((productFeature) => (
@@ -89,12 +89,14 @@ const Description = styled.p`
 
 const ProductFeatureSection = styled.section`
   margin-top: ${(props) => (props.isHome ? '-100px' : '0')};
-  margin-bottom: 50px;
+  padding-bottom: 50px;
 
   ${(props) =>
     props.isHome &&
     css`
       padding: 0;
+
+      background-color: transparent;
     `}
 `
 

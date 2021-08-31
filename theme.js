@@ -74,6 +74,7 @@ export const defaultTheme = {
     // Final colors
     yellowb89: '#B89841',
     gray102: '#10252e',
+    gray0e1: '#0E131F',
     gray101: '#10131B',
     gray010: '#010914',
     gray607: '#607A8A',
