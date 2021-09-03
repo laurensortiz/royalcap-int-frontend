@@ -21,6 +21,7 @@ import BrokerRegistrationFeature from 'components/sections/BrokerRegistrationFea
 import ProductListFeature from 'components/sections/ProductListFeature'
 import BankSlider from 'components/sections/BankSlider'
 import SectionLayout from 'components/sections/SectionLayout'
+import Alert from 'components/sections/Alert'
 import EmbededCode from 'components/sections/EmbededCode'
 
 // Map Strapi sections to section components
@@ -46,6 +47,7 @@ const sectionComponents = {
   'sections.pricing': Pricing,
   'sections.lead-form': LeadForm,
   'sections.html-embded': EmbededCode,
+  'sections.alerts': Alert,
 }
 
 // Display a section individually
@@ -79,7 +81,6 @@ const PreviewModeBanner = () => {
 
 // Display the list of sections
 const Sections = ({ sections, preview }) => {
-  console.log(sections);
   return (
     <div className="flex flex-col">
       {/* Show a banner if preview mode is on */}
