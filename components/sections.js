@@ -22,6 +22,7 @@ import ProductListFeature from 'components/sections/ProductListFeature'
 import BankSlider from 'components/sections/BankSlider'
 import SectionLayout from 'components/sections/SectionLayout'
 import Alert from 'components/sections/Alert'
+import EmbededCode from 'components/sections/EmbededCode'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -45,6 +46,7 @@ const sectionComponents = {
   'sections.rich-text': RichText,
   'sections.pricing': Pricing,
   'sections.lead-form': LeadForm,
+  'sections.html-embded': EmbededCode,
   'sections.alerts': Alert,
 }
 
