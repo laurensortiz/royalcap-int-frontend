@@ -10,6 +10,11 @@ const InternalHero = ({ data }) => {
           <div className="row blog-header text-left">
             <div className="col-sm-12">
               <Markdown>{data.title}</Markdown>
+              {data.description && (
+                <div className="description ">
+                  <Markdown className="text-xl">{data.description}</Markdown>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -31,19 +36,19 @@ const HeroContainer = styled.div`
     left: 0;
     top: 0;
     background: rgb(0, 0, 0);
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8337710084033614) 21%, rgba(0, 0, 0, 0) 87%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 21%, rgba(0, 0, 0, 0) 87%);
   }
 `
 
 const Header = styled.header`
   background: url(${(props) => props.imagePath}) no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  //background-attachment: fixed;
   background-position: center;
   overflow: hidden;
   color: #fff;
   box-sizing: border-box;
-  height: 307px;
+  height: 400px;
   width: 100%;
   position: relative;
 
@@ -52,7 +57,7 @@ const Header = styled.header`
     font-size: 45px;
     line-height: 3.2rem;
     letter-spacing: 1px;
-    padding-bottom: 31px;
+
     font-weight: 400;
     margin-bottom: 0;
     strong {

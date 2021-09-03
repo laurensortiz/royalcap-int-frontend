@@ -72,7 +72,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
   }
 
   body {
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Titillium Web', sans-serif;
     background: transparent;
     line-height: 1.5;
@@ -142,7 +142,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
   p {
     font-weight: 400;
     line-height: 24px;
-    font-size: 14px;
+    font-size: 16px;
   }
 
   h1 {
@@ -2815,7 +2815,7 @@ const GlobalStyle = createGlobalStyle`${() => css`
   header .container {
     z-index: 10;
     position: relative;
-    top: 50%;
+    top: 40%;
     transform: translateY(-50%);
   }
 
@@ -5289,11 +5289,19 @@ const GlobalStyle = createGlobalStyle`${() => css`
     }
   }
 
-  section.black {
+  section.black,
+  .section.black {
     background-color: ${(props) => props.theme.colors.gray101};
 
-    h1 {
+    h1,
+    h2,
+    h3,
+    h4 {
       color: #fff;
+    }
+
+    p {
+      color: #aaa;
     }
   }
 `}`

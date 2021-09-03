@@ -21,6 +21,7 @@ import BrokerRegistrationFeature from 'components/sections/BrokerRegistrationFea
 import ProductListFeature from 'components/sections/ProductListFeature'
 import BankSlider from 'components/sections/BankSlider'
 import SectionLayout from 'components/sections/SectionLayout'
+import Alert from 'components/sections/Alert'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -44,6 +45,7 @@ const sectionComponents = {
   'sections.rich-text': RichText,
   'sections.pricing': Pricing,
   'sections.lead-form': LeadForm,
+  'sections.alerts': Alert,
 }
 
 // Display a section individually

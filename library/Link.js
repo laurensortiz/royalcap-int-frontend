@@ -4,6 +4,8 @@ import { buttonStyle } from './Button'
 
 const linkStyles = css`
   cursor: pointer;
+  display: inline-block;
+  margin: 10px 0;
 `
 
 const BaseLink = styled.a`

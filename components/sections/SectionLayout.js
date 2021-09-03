@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components'
 import { Row, Col, Link, Markdown } from 'library'
 import NextImage from 'components/elements/image'
+import MediaPath from 'helpers/mediaPath'
 
 const ContentLeft = ({ data, cta }) => (
   <>
@@ -67,21 +68,30 @@ const SectionLayout = ({ data }) => {
   const cta = data.cta
   const isOneColumn = data.isOneColumn || false
 
+  console.log('[=====  DATA  =====>')
+  console.log(sectionData.bgSection && sectionData.bgSection.url)
+  console.log('<=====  /DATA  =====]')
+
   return (
-    <Section className={`main-section ${data.bgClass || ''}`} isOneColumn={isOneColumn}>
+    <Section
+      className={`main-section ${data.bgClass || ''}`}
+      isOneColumn={isOneColumn}
+      bgSection={MediaPath(sectionData.bgSection && sectionData.bgSection.url)}
+      bgPosition={sectionData.contentPosition}
+    >
       <div className="container">
         <Row justify={'center'}>
-          <Col xs={12}>
+          <Col xs={24} md={18}>
             <div className="about_list">
               {/* Start: Heading */}
               {sectionData.title && (
                 <div className="base-header">
                   <h2>{sectionData.title}</h2>
-                </div>
-              )}
-              {sectionData.description && (
-                <div className="mb-6 text-justify">
-                  <Markdown>{sectionData.description}</Markdown>
+                  {sectionData.description && (
+                    <div className="mb-6 text-justify">
+                      <Markdown>{sectionData.description}</Markdown>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
@@ -109,10 +119,16 @@ const Section = styled.section`
     css`
       padding-bottom: 0;
     `}
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.x}) {
+    background: url(${(props) => props.bgSection}) no-repeat;
+    background-position: center ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
+    background-size: contain;
+  }
 `
 
 const LinkWrapper = styled.div`
-  padding: 50px 0;
+  padding: 15px 0;
 `
 
 export default SectionLayout
