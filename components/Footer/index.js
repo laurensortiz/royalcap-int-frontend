@@ -18,7 +18,7 @@ function ColumnContent({ title, children }) {
 const Footer = ({ footer, logo }) => {
   const [scroll, setScroll] = useState(0)
   const [top, setTop] = useState(0)
-  
+
   useEffect(() => {
     setTop(100)
     window.addEventListener('scroll', handleScroll)
@@ -49,12 +49,12 @@ const Footer = ({ footer, logo }) => {
           <div className="col-lg-9 col-sm-12">
             <div className="row">
               {/*  Start:Quick a  */}
-              {footer.columns.map(column => {
+              {footer.columns.map((column) => {
                 return (
                   <div key={column.id} className="col-lg-4 col-sm-12">
                     <ColumnContent title={column.title}>
                       <ul classes="recent-post helpful_post">
-                        {column.links.map(link => (
+                        {column.links.map((link) => (
                           <li key={link.id}>
                             <Anchor href={link.url}>{link.text}</Anchor>
                           </li>
@@ -62,11 +62,10 @@ const Footer = ({ footer, logo }) => {
                       </ul>
                     </ColumnContent>
                   </div>
-                );
+                )
               })}
               {/*  End:Quick a  */}
             </div>
-
           </div>
 
           {/* Start:Newsletter  */}
@@ -366,7 +365,8 @@ const FooterWrapper = styled.div`
 `
 const Anchor = styled.a`
   color: #fff;
-  &:focus, &:active {
+  &:focus,
+  &:active {
     color: #fff;
   }
 `

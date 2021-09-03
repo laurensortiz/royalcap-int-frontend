@@ -3,18 +3,17 @@ import { Row, Col, Link, Markdown } from 'library'
 import InnerHTML from 'dangerously-set-html-content'
 
 const EmbededCode = ({ data }) => {
-    console.log(data);
   return (
     <Section className={`section ${data.bgClass || ''}`}>
-        <div className="content">
-            {data.Code.map( item => (
-                <Row justify="center">
-                    <Col>
-                        <InnerHTML key={item.id} html={item.code} />
-                    </Col>
-                </Row>
-            ))}
-        </div>
+      <div className="content">
+        {data.Code.map((item) => (
+          <Row key={item.id} justify="center">
+            <Col>
+              <InnerHTML key={item.id} html={item.code} />
+            </Col>
+          </Row>
+        ))}
+      </div>
     </Section>
   )
 }
