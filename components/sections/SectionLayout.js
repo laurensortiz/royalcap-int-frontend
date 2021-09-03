@@ -16,25 +16,25 @@ const ContentLeft = ({ data, cta }) => (
           </LinkWrapper>
         ))}
     </Col>
-    <Col lg={12}>
+    <ImageCol lg={12} bgColumn={MediaPath(data.bgColumn && data.bgColumn.url)}>
       {data.imgColumn && (
         <div className={'img-responsive'}>
-          <NextImage media={data.imgColumn} layout={'fill'} />
+          <NextImage media={data.imgColumn} layout={'responsive'} />
         </div>
       )}
-    </Col>
+    </ImageCol>
   </>
 )
 
 const ContentRight = ({ data, cta }) => (
   <>
-    <Col lg={12}>
+    <ImageCol lg={12} bgColumn={MediaPath(data.bgColumn && data.bgColumn.url)}>
       {data.imgColumn && (
         <div className={'img-responsive'}>
-          <NextImage media={data.imgColumn} layout={'intrinsic'} />
+          <NextImage media={data.imgColumn} layout={'responsive'} />
         </div>
       )}
-    </Col>
+    </ImageCol>
     <Col lg={12}>
       <Markdown>{data.content}</Markdown>
       {cta &&
@@ -67,10 +67,6 @@ const SectionLayout = ({ data }) => {
   const sectionData = data.SectionLayout
   const cta = data.cta
   const isOneColumn = data.isOneColumn || false
-
-  console.log('[=====  DATA  =====>')
-  console.log(sectionData.bgSection && sectionData.bgSection.url)
-  console.log('<=====  /DATA  =====]')
 
   return (
     <Section
@@ -113,7 +109,23 @@ const SectionLayout = ({ data }) => {
   )
 }
 
+const ImageCol = styled(Col)`
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.x}) {
+    background: url(${(props) => props.bgColumn}) no-repeat;
+    background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
+    background-size: cover;
+
+    ${(props) =>
+      props.bgColumn &&
+      css`
+        min-height: 300px;
+      `}
+  }
+`
+
 const Section = styled.section`
+  position: relative;
+  overflow: hidden;
   ${(props) =>
     props.isOneColumn &&
     css`
@@ -122,8 +134,29 @@ const Section = styled.section`
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.x}) {
     background: url(${(props) => props.bgSection}) no-repeat;
-    background-position: center ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
-    background-size: contain;
+    background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
+    background-size: cover;
+    background-attachment: fixed;
+    ${(props) =>
+      props.bgSection &&
+      css`
+        .container {
+          color: #fff;
+          h2,
+          h3 {
+            color: #fff;
+          }
+          &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            top: 0;
+            left: 0;
+          }
+        }
+      `}
   }
 `
 

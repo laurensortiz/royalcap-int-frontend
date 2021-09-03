@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import Markdown from 'react-markdown'
 import styled from 'styled-components'
-import { Row, Col, Layout, Link } from 'library'
+import { Row, Col, Markdown, Link } from 'library'
 import MediaPath from 'helpers/mediaPath'
 
 const BrokerRegistrationFeature = ({ data }) => {

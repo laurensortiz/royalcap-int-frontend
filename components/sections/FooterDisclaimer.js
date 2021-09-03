@@ -1,4 +1,4 @@
-import Markdown from 'react-markdown'
+import { Markdown } from 'library'
 import styled from 'styled-components'
 import { WarningOutlined } from '@ant-design/icons'
 

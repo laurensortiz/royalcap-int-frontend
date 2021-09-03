@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import Markdown from 'react-markdown'
-import { Link } from 'library'
+import { Link, Markdown } from 'library'
 
 import SlickSlider from '../UI/Carousel/slick'
 import styled from 'styled-components'
@@ -88,10 +87,10 @@ const Slider = ({ data }) => {
                       ref={videoEl}
                     />
                   )}
-                  <div className="slider_item_tb">
+                  <SliderContent className="slider_item_tb">
                     <div className="slider_item_tbcell">
                       <div className="container">
-                        <div className="row justify-content-md-center">
+                        <div className="row">
                           <div className="col-md-8 col-sm-12">
                             <RichText>{item.title}</RichText>
                             <RichText>{item.description}</RichText>
@@ -108,7 +107,7 @@ const Slider = ({ data }) => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </SliderContent>
                 </SingleSlider>
               </div>
             )
@@ -118,6 +117,16 @@ const Slider = ({ data }) => {
     </div>
   )
 }
+
+const SliderContent = styled.div`
+  text-align: left;
+
+  h1 {
+    font-size: 2.75rem;
+    line-height: 3.375rem;
+    color: #fff;
+  }
+`
 
 const LinkWrapper = styled.div`
   font-size: 1rem;
@@ -150,15 +159,19 @@ const VideoSlider = styled.video`
   top: 0;
   left: 0;
   background-size: cover;
-  opacity: 0.4;
+  opacity: 0.7;
   z-index: 0;
   background-color: #000;
 `
 
 const RichText = styled(Markdown)`
   p {
-    font-size: 1em;
-    line-height: 1.8em;
+    font-size: 1.1875rem;
+    line-height: 1.6875rem;
+
+    span {
+      color: inherit;
+    }
   }
 `
 
