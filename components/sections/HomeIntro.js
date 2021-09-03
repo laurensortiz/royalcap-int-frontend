@@ -1,5 +1,4 @@
-import Markdown from 'react-markdown'
-import styled from 'styled-components'
+import { Markdown } from 'library'
 import IconItem from 'components/UI/iconItem'
 const HomeIntro = ({ data }) => {
   return (

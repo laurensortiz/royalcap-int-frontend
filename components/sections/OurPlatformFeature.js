@@ -1,6 +1,5 @@
-import Markdown from 'react-markdown'
 import styled from 'styled-components'
-import { Row, Col, Layout, Link } from 'library'
+import { Row, Col, Layout, Link, Markdown } from 'library'
 import NextImage from 'components/elements/image'
 
 const { Content } = Layout

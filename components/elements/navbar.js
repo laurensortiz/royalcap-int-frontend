@@ -59,7 +59,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
               </ActionContainer>
               {/* Locale Switch Mobile */}
               {pageContext.localizedPaths && (
-                <div className="md:hidden">
+                <div className="md:hidden" style={{ display: 'none' }}>
                   <LocaleSwitch pageContext={pageContext} />
                 </div>
               )}
@@ -70,7 +70,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
 
               {/* Locale Switch Desktop */}
               {pageContext.localizedPaths && (
-                <div className="hidden md:block">
+                <div className="hidden md:block" style={{ display: 'none' }}>
                   <LocaleSwitch pageContext={pageContext} />
                 </div>
               )}
