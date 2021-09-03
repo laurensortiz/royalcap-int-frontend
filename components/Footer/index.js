@@ -5,6 +5,7 @@ import { linkPropTypes, mediaPropTypes } from 'utils/types'
 import styled from 'styled-components'
 import { a } from 'react-router-dom'
 import NextImage from 'components/elements/image'
+import link from 'next/link'
 
 function ColumnContent({ title, children }) {
   return (
@@ -17,7 +18,7 @@ function ColumnContent({ title, children }) {
 const Footer = ({ footer, logo }) => {
   const [scroll, setScroll] = useState(0)
   const [top, setTop] = useState(0)
-
+  
   useEffect(() => {
     setTop(100)
     window.addEventListener('scroll', handleScroll)
@@ -45,63 +46,48 @@ const Footer = ({ footer, logo }) => {
             </ColumnContent>
           </div>
           {/*  End:About  */}
+          <div className="col-lg-9 col-sm-12">
+            <div className="row">
+              {/*  Start:Quick a  */}
+              {footer.columns.map(column => {
+                return (
+                  <div key={column.id} className="col-lg-4 col-sm-12">
+                    <ColumnContent title={column.title}>
+                      <ul classes="recent-post helpful_post">
+                        {column.links.map(link => (
+                          <li key={link.id}>
+                            <Anchor href={link.url}>{link.text}</Anchor>
+                          </li>
+                        ))}
+                      </ul>
+                    </ColumnContent>
+                  </div>
+                );
+              })}
+              {/*  End:Quick a  */}
+            </div>
 
-          {/*  Start:Quick a  */}
-          <div className="col-lg-3 col-sm-12">
-            <ColumnContent title="Helpful a">
-              <ul classes="recent-post helpful_post">
-                <li>
-                  <a to={process.env.PUBliC_URL + '/about'}>Why choose us</a>
-                </li>
-                <li>
-                  <a to={process.env.PUBliC_URL + '/services'}>Our service</a>
-                </li>
-                <li>
-                  <a to={process.env.PUBliC_URL + '/single-services'}>About us</a>
-                </li>
-              </ul>
-            </ColumnContent>
           </div>
-          {/*  End:Quick a  */}
 
-          {/*  Start:Latest post   */}
-          <div className="col-lg-3 col-sm-12">
-            <ColumnContent title="Latest Articles">
-              <ul classes="recent-post">
-                <li>
-                  <a to={process.env.PUBliC_URL + '/blog'}>Loren ipsum dolor consectetur </a>
-                </li>
-                <li>
-                  <a to={process.env.PUBliC_URL + '/blog'}>Loren ipsum dolor consectetur </a>
-                </li>
-                <li>
-                  <a to={process.env.PUBliC_URL + '/blog'}>Loren ipsum dolor consectetur </a>
-                </li>
-              </ul>
-            </ColumnContent>
-          </div>
-          {/*  End:Latest post  */}
-
-          {/*  Start:Newsletter  */}
-          <div className="col-lg-3 col-sm-12">
-            <ColumnContent title="Subcribe now">
-              {/*  Start:Subscribe  */}
-              <div className="news_letter_wrp">
-                <p>Subscribe our newsletter to get more update & join to Elizah </p>
-                <form className="footer_subs">
-                  <input
-                    className="form-input"
-                    placeholder="Enter Your Email Address"
-                    type="text"
-                  />
-                  <button type="submit" className="form-button"></button>
-                </form>
-                {/*  END MAILCHIMP FORM  */}
-              </div>
-            </ColumnContent>
-          </div>
+          {/* Start:Newsletter  */}
+          {/* <div className="col-lg-3 col-sm-12">
+              <ColumnContent title="Subcribe now">
+                <div className="news_letter_wrp">
+                  <p>Subscribe our newsletter to get more update & join to Elizah </p>
+                  <form className="footer_subs">
+                    <input
+                      className="form-input"
+                      placeholder="Enter Your Email Address"
+                      type="text"
+                    />
+                    <button type="submit" className="form-button"></button>
+                  </form>
+                </div>
+              </ColumnContent>
+            </div> */}
           {/*  End:Start Subscribe  */}
-
+        </div>
+        <div className="row">
           {/*  Start:Subfooter  */}
           <div className="subfooter">
             <div className="copyright_text">
@@ -376,6 +362,12 @@ const FooterWrapper = styled.div`
   .scrollup:active,
   .scrollup:focus {
     color: #ddd;
+  }
+`
+const Anchor = styled.a`
+  color: #fff;
+  &:focus, &:active {
+    color: #fff;
   }
 `
 
