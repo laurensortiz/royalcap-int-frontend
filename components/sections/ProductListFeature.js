@@ -82,9 +82,10 @@ const Box = styled.div`
     margin-right: 10px;
   }
 
-  h4 {
+  h4.stock-market-title {
     font-size: 0.875rem;
     line-height: 1.0625rem;
+    color: #333;
   }
 `
 

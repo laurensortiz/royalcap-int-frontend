@@ -46,7 +46,11 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
               {/* CTA button on desktop */}
               <ActionContainer>
                 {loginButton && (
-                  <Link href={loginButton.url} isButton={true}>
+                  <Link
+                    href={loginButton.url}
+                    target={loginButton.newTab ? '_blank' : ''}
+                    isButton={true}
+                  >
                     {loginButton.text}
                   </Link>
                 )}
