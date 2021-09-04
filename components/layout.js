@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Navbar from './elements/navbar'
 import Footer from './Footer'
 import NotificationBanner from './elements/notification-banner'
-import Header from 'components/Header'
 import FooterDisclaimer from 'components/sections/FooterDisclaimer'
 import Widget from 'components/UI/Widget'
 
@@ -34,7 +33,7 @@ const Layout = ({ children, global, pageContext }) => {
 
       {footerDisclaimer && <FooterDisclaimer data={footerDisclaimer} />}
 
-      <Footer logo={navbar.logo} footer={footer} />
+      <Footer logo={navbar.logo} footer={footer} contactInfo={global.contactInfo} />
     </div>
   )
 }

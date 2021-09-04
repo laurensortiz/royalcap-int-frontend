@@ -1,9 +1,14 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Row, Col, Link, Markdown } from 'library'
+import NextImage from 'components/elements/image'
+import MediaPath from '../../helpers/mediaPath'
 
 const CountryListFeature = ({ data }) => {
   return (
-    <Section className={`section ${data.bgClass || ''}`}>
+    <Section
+      className={`section ${data.bgClass || ''}`}
+      bgSection={MediaPath(data.bgSection && data.bgSection.url)}
+    >
       <div className="container text-left">
         <Row justify="center">
           <Col>
@@ -21,16 +26,21 @@ const CountryListFeature = ({ data }) => {
           </Col>
         </Row>
         <Row gutter={[16, 16]}>
-          {data.productListFeature.map((product) => {
+          {data.countries.map((country) => {
             return (
-              <Col key={product.id} xs={24} sm={12}>
+              <Col key={country.id} xs={24} sm={12}>
                 <Box>
-                  <Link href={product.linkUrl}>
+                  <Link href={country.linkUrl}>
                     <span>
-                      <i className={`stock-market-icon ${product.className}`}>
-                        <span>{product.smallTitle}</span>
+                      <i className={`flag-icon`}>
+                        <NextImage
+                          width={80}
+                          height={80}
+                          layout={'intrinsic'}
+                          media={country.flag}
+                        />
                       </i>
-                      <h4 className="stock-market-title">{product.title}</h4>
+                      <h4 className="stock-market-title">{country.title}</h4>
                     </span>
                   </Link>
                 </Box>
@@ -62,7 +72,42 @@ const LinkWrapper = styled.div`
   padding: 50px 0 0;
 `
 
-const Section = styled.section``
+const Section = styled.section`
+  position: relative;
+  overflow: hidden;
+  ${(props) =>
+    props.isOneColumn &&
+    css`
+      padding-bottom: 0;
+    `}
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.x}) {
+    background: url(${(props) => props.bgSection}) no-repeat;
+    background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
+    background-size: cover;
+    background-attachment: fixed;
+    ${(props) =>
+      props.bgSection &&
+      css`
+        .container {
+          color: #fff;
+          h2,
+          h3 {
+            color: #fff;
+          }
+          &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            top: 0;
+            left: 0;
+          }
+        }
+      `}
+  }
+`
 
 const Box = styled.div`
   display: flex;
@@ -72,18 +117,20 @@ const Box = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
-  padding: 30px;
+  padding: 10px 30px;
 
   span {
     display: flex;
+    align-items: center;
   }
 
   i {
-    margin-right: 10px;
+    margin-right: 30px;
   }
 
-  h4 {
-    font-size: 0.875rem;
+  h4.stock-market-title {
+    color: #333;
+    font-size: 1.4rem;
     line-height: 1.0625rem;
   }
 `
