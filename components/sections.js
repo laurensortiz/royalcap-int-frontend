@@ -23,6 +23,7 @@ import BankSlider from 'components/sections/BankSlider'
 import SectionLayout from 'components/sections/SectionLayout'
 import Alert from 'components/sections/Alert'
 import EmbededCode from 'components/sections/EmbededCode'
+import CountryListFeature from 'components/sections/CountryListFeature'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -48,6 +49,7 @@ const sectionComponents = {
   'sections.lead-form': LeadForm,
   'sections.html-embded': EmbededCode,
   'sections.alerts': Alert,
+  'sections.country-feature': CountryListFeature,
 }
 
 // Display a section individually

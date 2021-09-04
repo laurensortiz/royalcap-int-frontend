@@ -11,9 +11,9 @@ const OurPlatformFeature = ({ data }) => {
 
   return (
     <section className="about-section " id="platform">
-      <Content>
+      <div className={'container'}>
         <Row justify="center">
-          <Col xs={18}>
+          <Col xs={24}>
             <div className="about_list">
               <div className="base-header2">
                 <h1>{ourPlatform.title}</h1>
@@ -34,7 +34,7 @@ const OurPlatformFeature = ({ data }) => {
             </div>
           </Col>
         </Row>
-      </Content>
+      </div>
     </section>
   )
 }

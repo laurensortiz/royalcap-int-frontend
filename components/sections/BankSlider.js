@@ -36,6 +36,7 @@ const Slider = ({ data }) => {
         settings: {
           arrows: false,
           dots: false,
+          slidesToShow: 4,
         },
       },
       {
@@ -43,6 +44,7 @@ const Slider = ({ data }) => {
         settings: {
           arrows: false,
           dots: false,
+          slidesToShow: 2,
         },
       },
     ],

@@ -5,7 +5,7 @@ import { linkPropTypes, mediaPropTypes } from 'utils/types'
 import styled from 'styled-components'
 import { a } from 'react-router-dom'
 import NextImage from 'components/elements/image'
-import link from 'next/link'
+import { Markdown } from 'library'
 
 function ColumnContent({ title, children }) {
   return (
@@ -15,7 +15,7 @@ function ColumnContent({ title, children }) {
     </div>
   )
 }
-const Footer = ({ footer, logo }) => {
+const Footer = ({ footer, logo, contactInfo }) => {
   const [scroll, setScroll] = useState(0)
   const [top, setTop] = useState(0)
 
@@ -41,9 +41,10 @@ const Footer = ({ footer, logo }) => {
         <div className="row">
           {/*  Start:About  */}
           <div className="col-lg-3 col-sm-12">
-            <ColumnContent title="">
-              <NextImage width="228" height="52" media={logo} />
-            </ColumnContent>
+            <NextImage width="228" height="52" media={logo} />
+            <ContactDetail>
+              <Markdown>{contactInfo}</Markdown>
+            </ContactDetail>
           </div>
           {/*  End:About  */}
           <div className="col-lg-9 col-sm-12">
@@ -137,6 +138,15 @@ const Footer = ({ footer, logo }) => {
     </FooterWrapper>
   )
 }
+
+const ContactDetail = styled.div`
+  color: #909aa8;
+  margin-top: 25px;
+  p {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+`
 
 const FooterWrapper = styled.div`
   float: left;
