@@ -24,6 +24,8 @@ import SectionLayout from 'components/sections/SectionLayout'
 import Alert from 'components/sections/Alert'
 import EmbededCode from 'components/sections/EmbededCode'
 import CountryListFeature from 'components/sections/CountryListFeature'
+import SectionFeatureColumns from 'components/sections/SectionFeatureColumns'
+import ContactForm from 'components/sections/ContactForm'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -50,6 +52,8 @@ const sectionComponents = {
   'sections.html-embded': EmbededCode,
   'sections.alerts': Alert,
   'sections.country-feature': CountryListFeature,
+  'sections.section-feature-columns': SectionFeatureColumns,
+  'sections.contact-form': ContactForm,
 }
 
 // Display a section individually

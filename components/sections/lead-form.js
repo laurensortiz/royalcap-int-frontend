@@ -19,6 +19,9 @@ const LeadForm = ({ data }) => {
           initialValues={{ email: '' }}
           validationSchema={LeadSchema}
           onSubmit={async (values, { setSubmitting, setErrors }) => {
+            console.log('[=====  ll  =====>')
+            console.log()
+            console.log('<=====  /ll  =====]')
             setLoading(true)
 
             try {
@@ -49,6 +52,7 @@ const LeadForm = ({ data }) => {
                 />
                 <Button
                   type="submit"
+                  htmlType="submit"
                   button={data.submitButton}
                   disabled={isSubmitting}
                   loading={loading}
