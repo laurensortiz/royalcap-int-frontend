@@ -5303,6 +5303,25 @@ const GlobalStyle = createGlobalStyle`${() => css`
     p {
       color: #aaa;
     }
+
+    .ant-alert-message {
+      p {
+        color: #fff;
+      }
+    }
+  }
+  .text-field {
+    padding: 15px;
+    width: 100%;
+    border-radius: 6px;
+
+    &.has-error {
+      border: 1px solid red;
+    }
+  }
+
+  p.error {
+    color: red !important;
   }
 `}`
 

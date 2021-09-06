@@ -3,18 +3,25 @@ import { Row, Col, Link, Markdown } from 'library'
 import NextImage from 'components/elements/image'
 import MediaPath from 'helpers/mediaPath'
 
+const getLink = (ctaItem) => {
+  const isFile = ctaItem.isFile || false
+  const newTab = ctaItem.newTab || false
+  const linkPath = isFile ? MediaPath(ctaItem.url) : ctaItem.url
+
+  return (
+    <LinkWrapper key={ctaItem.id}>
+      <Link href={linkPath} isButton={true} target={newTab ? '_blank' : '_self'}>
+        {ctaItem.text}
+      </Link>
+    </LinkWrapper>
+  )
+}
+
 const ContentLeft = ({ data, cta }) => (
   <>
     <Col lg={12}>
       <Markdown>{data.content}</Markdown>
-      {cta &&
-        cta.map((ctaItem) => (
-          <LinkWrapper key={ctaItem.id}>
-            <Link href={ctaItem.url} isButton={true}>
-              {ctaItem.text}
-            </Link>
-          </LinkWrapper>
-        ))}
+      {cta && cta.map((ctaItem) => <LinkWrapper key={ctaItem.id}>{getLink(ctaItem)}</LinkWrapper>)}
     </Col>
     <ImageCol lg={12} bgColumn={MediaPath(data.bgColumn && data.bgColumn.url)}>
       {data.imgColumn && (
@@ -37,14 +44,7 @@ const ContentRight = ({ data, cta }) => (
     </ImageCol>
     <Col lg={12}>
       <Markdown>{data.content}</Markdown>
-      {cta &&
-        cta.map((ctaItem) => (
-          <LinkWrapper key={ctaItem.id}>
-            <Link href={ctaItem.url} isButton={true}>
-              {ctaItem.text}
-            </Link>
-          </LinkWrapper>
-        ))}
+      {cta && cta.map((ctaItem) => <LinkWrapper key={ctaItem.id}>{getLink(ctaItem)}</LinkWrapper>)}
     </Col>
   </>
 )
@@ -52,14 +52,7 @@ const ContentRight = ({ data, cta }) => (
 const ContentCenter = ({ data, cta }) => (
   <Col xs={24}>
     <Markdown>{data.content}</Markdown>
-    {cta &&
-      cta.map((ctaItem) => (
-        <LinkWrapper key={ctaItem.id}>
-          <Link href={ctaItem.url} isButton={true}>
-            {ctaItem.text}
-          </Link>
-        </LinkWrapper>
-      ))}
+    {cta && cta.map((ctaItem) => <LinkWrapper key={ctaItem.id}>{getLink(ctaItem)}</LinkWrapper>)}
   </Col>
 )
 
@@ -113,7 +106,7 @@ const ImageCol = styled(Col)`
   @media screen and (min-width: ${(props) => props.theme.breakpoints.x}) {
     background: url(${(props) => props.bgColumn}) no-repeat;
     background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
-    background-size: cover;
+    background-size: contain;
 
     ${(props) =>
       props.bgColumn &&
