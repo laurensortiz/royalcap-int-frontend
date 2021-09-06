@@ -4,19 +4,18 @@ import * as yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { Markdown, Row, Col, Alert, Button } from 'library'
 import styled from 'styled-components'
+import Link from 'next/link'
 
-const ContactForm = ({ data }) => {
+const AccountForm = ({ data }) => {
   const [loading, setLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
 
   const ContactSchema = yup.object().shape({
     name: yup.string().required(),
-    lastName: yup.string().required(),
     email: yup.string().email().required(),
-    message: yup.string().required(),
-    country: yup.string().required(),
-    category: yup.string().required(),
+    accountType: yup.string().required(),
+    termsAndConditions: yup.bool().oneOf([true], 'Requerido'),
   })
 
   return (
@@ -50,12 +49,9 @@ const ContactForm = ({ data }) => {
           <Formik
             initialValues={{
               name: '',
-              lastName: '',
               email: '',
-              phone: '',
-              country: '',
-              category: '',
-              message: '',
+              accountType: '',
+              termsAndConditions: false,
             }}
             validationSchema={ContactSchema}
             onSubmit={async (values, { setSubmitting, setErrors }) => {
@@ -65,16 +61,12 @@ const ContactForm = ({ data }) => {
                 setErrors({ api: null })
                 setIsSuccess(false)
                 setIsError(false)
-                await fetchAPI('/contact-forms', {
+                await fetchAPI('/account-forms', {
                   method: 'POST',
                   body: JSON.stringify({
                     name: values.name,
-                    lastName: values.lastName,
                     email: values.email,
-                    phone: values.phone,
-                    country: values.country,
-                    category: values.category,
-                    message: values.message,
+                    accountType: values.accountType,
                   }),
                 })
                 setIsSuccess(true)
@@ -101,19 +93,6 @@ const ContactForm = ({ data }) => {
                       />
                     </Col>
                     <Col xs={24} md={12}>
-                      <Label>{data.lastNamePlaceholder}</Label>
-                      <Field
-                        type="lastName"
-                        name="lastName"
-                        placeholder={data.lastNamePlaceholder}
-                        className={`text-field ${
-                          errors.lastName && touched.lastName && 'has-error'
-                        }`}
-                      />
-                    </Col>
-                  </Row>
-                  <Row gutter={[16, 16]}>
-                    <Col xs={24} md={12}>
                       <Label>{data.emailPlaceholder}</Label>
                       <Field
                         type="email"
@@ -122,53 +101,42 @@ const ContactForm = ({ data }) => {
                         className={`text-field ${errors.email && touched.email && 'has-error'}`}
                       />
                     </Col>
-                    <Col xs={24} md={12}>
-                      <Label>{data.phonePlaceholder}</Label>
-                      <Field
-                        type="phone"
-                        name="phone"
-                        placeholder={data.phonePlaceholder}
-                        className={`text-field ${errors.phone && touched.phone && 'has-error'}`}
-                      />
-                    </Col>
                   </Row>
                   <Row gutter={[16, 16]}>
-                    <Col xs={24} md={12}>
-                      <Label>{data.countryPlaceholder}</Label>
-                      <Field
-                        type="country"
-                        name="country"
-                        placeholder={data.countryPlaceholder}
-                        className={`text-field ${errors.country && touched.country && 'has-error'}`}
-                      />
-                    </Col>
-                    <Col xs={24} md={12}>
+                    <Col xs={24}>
+                      <Label>{data.accountTypePlaceholder}</Label>
                       <Label>{data.categoryPlaceholder}</Label>
                       <Field
                         as="select"
-                        name="category"
-                        placeholder={data.categoryPlaceholder}
+                        name="accountType"
+                        placeholder={data.accountTypePlaceholder}
                         className={`text-field ${
-                          errors.category && touched.category && 'has-error'
+                          errors.accountType && touched.accountType && 'has-error'
                         }`}
                       >
                         <option value=""></option>
-                        <option value="Soporte">Soporte</option>
-                        <option value="Pagos">Pagos</option>
-                        <option value="Trading">Trading</option>
-                        <option value="Cuentas">Cuentas</option>
+                        <option value="micro">Micro</option>
+                        <option value="classic">Classic</option>
+                        <option value="gold">Gold</option>
+                        <option value="metaTrader">MetaTrader 5</option>
+                        <option value="metaTrader_demo">MetaTrader 5 - DEMO</option>
+                        <option value="rentaFija_3_5">Renta Fija 3.5%</option>
+                        <option value="rentaFija_5">Renta Fija 5%</option>
                       </Field>
                     </Col>
                   </Row>
                   <Row>
-                    <Label>{data.messagePlaceholder}</Label>
-                    <Col xs={24}>
-                      <Field
-                        type="message"
-                        name="message"
-                        className={`text-field ${errors.message && touched.message && 'has-error'}`}
-                        style={{ minHeight: 200 }}
-                      />
+                    <Col>
+                      <Link href={'/politicas-de-privacidad'}>
+                        <a target="_blank">{data.termsAndConditionsPlaceholder}</a>
+                      </Link>
+
+                      <Checkbox type="checkbox" name="termsAndConditions" />
+                      <p className="error">
+                        {errors.termsAndConditions &&
+                          touched.termsAndConditions &&
+                          errors.termsAndConditions}
+                      </p>
                     </Col>
                   </Row>
 
@@ -200,6 +168,10 @@ const ContactForm = ({ data }) => {
 
 const Section = styled.section``
 
+const Checkbox = styled(Field)`
+  margin-left: 10px;
+`
+
 const FormWrapper = styled(Col)`
   .ant-row {
     margin: 10px 0;
@@ -211,4 +183,4 @@ const Label = styled.label`
   padding: 10px 0;
 `
 
-export default ContactForm
+export default AccountForm
