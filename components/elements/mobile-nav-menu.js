@@ -32,7 +32,7 @@ const MobileNavMenu = ({ navbar, closeSelf, loginButton, createAccountButton }) 
         <NavListContainer>
           <NavList>
             {navbar.links.map((navLink) => (
-              <li key={navLink.id}>
+              <li key={navLink.id} onClick={closeSelf}>
                 <CustomLink link={navLink}>
                   <div className="nav-item flex flex-row justify-between items-center">
                     <span>{navLink.text}</span>
@@ -48,13 +48,14 @@ const MobileNavMenu = ({ navbar, closeSelf, loginButton, createAccountButton }) 
                 href={loginButton.url}
                 target={loginButton.newTab ? '_blank' : ''}
                 isButton={true}
+                onClick={closeSelf}
               >
                 {loginButton.text}
               </Link>
             )}
 
             {createAccountButton && (
-              <Link href={createAccountButton.url} isButton={true} ghost>
+              <Link href={createAccountButton.url} isButton={true} ghost onClick={closeSelf}>
                 {createAccountButton.text}
               </Link>
             )}
@@ -106,6 +107,7 @@ const NavDropdown = styled.div`
   z-index: 100;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: ${(props) => props.theme.colors.gray101};
 `
 
 const NavListContainer = styled.div`

@@ -105,7 +105,7 @@ const MenuWrapper = styled.div`
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 9999;
+  z-index: 999;
   box-shadow: 0 3px 6px rgba(54, 54, 54, 0.08);
 
   .menu-item {
