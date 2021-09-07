@@ -42,7 +42,7 @@ const NotificationDisclaimer = ({
   return isDisclaimerVisible ? (
     <ModalBase>
       <Modal
-        title={title}
+        title={title || ''}
         visible={isDisclaimerVisible}
         width={'90%'}
         centered={centered || false}
@@ -53,6 +53,7 @@ const NotificationDisclaimer = ({
         okButtonProps={{ style: { borderRadius: 6 } }}
         onOk={handleDisclaimerVisible}
         closable={false}
+        zIndex={9999}
       >
         <Markdown>{content}</Markdown>
       </Modal>
