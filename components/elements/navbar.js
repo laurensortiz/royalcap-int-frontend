@@ -22,7 +22,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
       {/* The actual navbar */}
       <MenuWrapper>
         <nav className="border-gray-200 border-b-2 py-6 sm:py-2">
-          <div className="container flex flex-row items-center justify-between">
+          <div className="container-fluid flex flex-row items-center justify-between">
             {/* Content aligned to the left */}
             <div className="flex flex-row items-center">
               <Logo>
@@ -32,15 +32,17 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
               </Logo>
 
               {/* List of links on desktop */}
-              <ul className="hidden list-none md:flex flex-row gap-4 items-baseline">
-                {navbar.links.map((navLink) => (
-                  <li key={navLink.id} className="menu-item">
-                    <CustomLink link={navLink} locale={router.locale}>
-                      <div className="px-2 py-1">{navLink.text}</div>
-                    </CustomLink>
-                  </li>
-                ))}
-              </ul>
+              <NavList>
+                <ul className="list-none md:flex flex-row gap-4 items-baseline">
+                  {navbar.links.map((navLink) => (
+                    <li key={navLink.id} className="menu-item">
+                      <CustomLink link={navLink} locale={router.locale}>
+                        <div className="px-2 py-1">{navLink.text}</div>
+                      </CustomLink>
+                    </li>
+                  ))}
+                </ul>
+              </NavList>
             </div>
             <div className="flex">
               {/* CTA button on desktop */}
@@ -68,9 +70,11 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
                 </div>
               )}
               {/* Hamburger menu on mobile */}
-              <button onClick={() => setMobileMenuIsShown(true)} className="p-1 block md:hidden">
-                <MdMenu className="h-8 w-auto" />
-              </button>
+              <MenuIconMobile>
+                <button onClick={() => setMobileMenuIsShown(true)} className="p-1">
+                  <MdMenu className="h-8 w-auto" />
+                </button>
+              </MenuIconMobile>
 
               {/* Locale Switch Desktop */}
               {pageContext.localizedPaths && (
@@ -84,7 +88,12 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
 
         {/* Mobile navigation menu panel */}
         {mobileMenuIsShown && (
-          <MobileNavMenu navbar={navbar} closeSelf={() => setMobileMenuIsShown(false)} />
+          <MobileNavMenu
+            loginButton={loginButton}
+            createAccountButton={createAccountButton}
+            navbar={navbar}
+            closeSelf={() => setMobileMenuIsShown(false)}
+          />
         )}
       </MenuWrapper>
     </>
@@ -114,13 +123,31 @@ const MenuWrapper = styled.div`
 `
 
 const ActionContainer = styled.div`
-  display: flex;
+  display: none;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.l}) {
+    display: flex;
+  }
 
   a {
     font-size: 0.8rem;
     height: 32px;
     margin: 0 5px;
     padding: 8px;
+  }
+`
+
+const MenuIconMobile = styled.div`
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.l}) {
+    display: none;
+  }
+`
+
+const NavList = styled.div`
+  display: none;
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.l}) {
+    display: block;
+    padding: 0 15px;
   }
 `
 
