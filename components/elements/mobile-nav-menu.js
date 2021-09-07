@@ -6,54 +6,154 @@ import { getButtonAppearance } from 'utils/button'
 import ButtonLink from './button-link'
 import NextImage from './image'
 import CustomLink from './custom-link'
+import { Link } from '../../library'
+import React from 'react'
+import styled from 'styled-components'
 
-const MobileNavMenu = ({ navbar, closeSelf }) => {
+const MobileNavMenu = ({ navbar, closeSelf, loginButton, createAccountButton }) => {
   // Prevent window scroll while mobile nav menu is open
   useLockBodyScroll()
 
   return (
-    <div className="w-screen h-screen fixed top-0 left-0 overflow-y-scroll bg-white z-10 pb-6">
-      <div className="container h-full flex flex-col justify-between">
-        {/* Top section */}
-        <div className="flex flex-row justify-between py-2 items-center">
-          {/* Company logo */}
-          <NextImage width="120" height="33" media={navbar.logo} />
-          {/* Close button */}
+    <NavMenuWrapper>
+      {/* Top section */}
+      <MenuHeader>
+        {/* Company logo */}
+        <NextImage width="228" height="52" media={navbar.logo} />
+        {/* Close button */}
+        <ActionBar>
           <button onClick={closeSelf} className="py-1 px-1">
             <MdClose className="h-8 w-auto" />
           </button>
-        </div>
-        {/* Bottom section */}
-        <div className="flex flex-col justify-end w-9/12 mx-auto">
-          <ul className="flex flex-col list-none gap-6 items-baseline text-xl mb-10">
+        </ActionBar>
+      </MenuHeader>
+      {/* Bottom section */}
+      <NavDropdown>
+        <NavListContainer>
+          <NavList>
             {navbar.links.map((navLink) => (
-              <li key={navLink.id} className="block w-full">
+              <li key={navLink.id}>
                 <CustomLink link={navLink}>
-                  <div className="hover:text-gray-900 py-6 flex flex-row justify-between items-center">
+                  <div className="nav-item flex flex-row justify-between items-center">
                     <span>{navLink.text}</span>
                     <MdChevronRight className="h-8 w-auto" />
                   </div>
                 </CustomLink>
               </li>
             ))}
-          </ul>
-          <ButtonLink
-            button={navbar.button}
-            appearance={getButtonAppearance(navbar.button.type, 'light')}
-          />
-        </div>
-      </div>
-    </div>
+          </NavList>
+          <NavFooter>
+            {loginButton && (
+              <Link
+                href={loginButton.url}
+                target={loginButton.newTab ? '_blank' : ''}
+                isButton={true}
+              >
+                {loginButton.text}
+              </Link>
+            )}
+
+            {createAccountButton && (
+              <Link href={createAccountButton.url} isButton={true} ghost>
+                {createAccountButton.text}
+              </Link>
+            )}
+          </NavFooter>
+        </NavListContainer>
+      </NavDropdown>
+    </NavMenuWrapper>
   )
 }
 
-MobileNavMenu.propTypes = {
-  navbar: PropTypes.shape({
-    logo: mediaPropTypes,
-    links: PropTypes.arrayOf(linkPropTypes),
-    button: buttonLinkPropTypes,
-  }),
-  closeSelf: PropTypes.func,
+const NavMenuWrapper = styled.div`
+  background-color: ${(props) => props.theme.colors.gray101};
+  transition: opacity .3s cubic-bezier(.645,.045,.355,1);
+  opacity: 1;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+`
+
+const MenuHeader = styled.div`
+  padding: 13px 10px 13px 15px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1120px;
+  width: 100%;
+`
+
+const ActionBar = styled.div`
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`
+
+const NavDropdown = styled.div`
+  opacity: 1;
+  height: calc(100% - 78px);
+  position: fixed;
+  top: 62px;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  overflow-y: auto;
+  overflow-x: hidden;
+`
+
+const NavListContainer = styled.div`
+  padding: 25px 15px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const NavList = styled.ul`
+  list-style: none;
+  padding: 0;
+
+  a {
+    color: #fff;
+  }
+
+  li {
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+  }
+
+  .nav-item {
+    padding: 10px 0;
+
+    svg {
+      display: none;
+    }
+  }
+`
+
+const NavFooter = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  a {
+    width: 100%;
+  }
+`
+
+// MobileNavMenu.propTypes = {
+//   navbar: PropTypes.shape({
+//     logo: mediaPropTypes,
+//     links: PropTypes.arrayOf(linkPropTypes),
+//     button: buttonLinkPropTypes,
+//   }),
+//   closeSelf: PropTypes.func,
+// }
 
 export default MobileNavMenu

@@ -19,11 +19,11 @@ const getLink = (ctaItem) => {
 
 const ContentLeft = ({ data, cta }) => (
   <>
-    <Col lg={12}>
+    <Col md={12}>
       <Markdown>{data.content}</Markdown>
       {cta && cta.map((ctaItem) => <LinkWrapper key={ctaItem.id}>{getLink(ctaItem)}</LinkWrapper>)}
     </Col>
-    <ImageCol lg={12} bgColumn={MediaPath(data.bgColumn && data.bgColumn.url)}>
+    <ImageCol md={12} bgColumn={MediaPath(data.bgColumn && data.bgColumn.url)}>
       {data.imgColumn && (
         <div className={'img-responsive'}>
           <NextImage media={data.imgColumn} layout={'responsive'} />
@@ -35,14 +35,14 @@ const ContentLeft = ({ data, cta }) => (
 
 const ContentRight = ({ data, cta }) => (
   <>
-    <ImageCol lg={12} bgColumn={MediaPath(data.bgColumn && data.bgColumn.url)}>
+    <ImageCol md={12} bgColumn={MediaPath(data.bgColumn && data.bgColumn.url)}>
       {data.imgColumn && (
         <div className={'img-responsive'}>
           <NextImage media={data.imgColumn} layout={'responsive'} />
         </div>
       )}
     </ImageCol>
-    <Col lg={12}>
+    <Col md={12}>
       <Markdown>{data.content}</Markdown>
       {cta && cta.map((ctaItem) => <LinkWrapper key={ctaItem.id}>{getLink(ctaItem)}</LinkWrapper>)}
     </Col>
@@ -60,17 +60,23 @@ const SectionLayout = ({ data }) => {
   const sectionData = data.SectionLayout
   const cta = data.cta
   const isOneColumn = data.isOneColumn || false
+  const isHalfBg = data.isHalfBg || false
+  const bgPosition = data.bgPosition || 'center'
+  const isBgFixed = data.isBgFixed
+  const titlePosition = data.titlePosition || 'center'
 
   return (
     <Section
       className={`main-section ${data.bgClass || ''}`}
       isOneColumn={isOneColumn}
       bgSection={MediaPath(sectionData.bgSection && sectionData.bgSection.url)}
-      bgPosition={sectionData.contentPosition}
+      isHalfBg={isHalfBg}
+      bgPosition={bgPosition}
+      isBgFixed={isBgFixed}
     >
       <div className="container">
-        <Row justify={'center'}>
-          <Col xs={24} md={18}>
+        <Row justify={titlePosition} gutter={[30, 30]}>
+          <Col xs={24} md={12}>
             <div className="about_list">
               {/* Start: Heading */}
               {sectionData.title && (
@@ -86,7 +92,7 @@ const SectionLayout = ({ data }) => {
             </div>
           </Col>
         </Row>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[30, 30]}>
           {isOneColumn ? (
             <ContentCenter data={sectionData} cta={cta} />
           ) : sectionData.contentPosition === 'left' ? (
@@ -106,7 +112,7 @@ const ImageCol = styled(Col)`
   @media screen and (min-width: ${(props) => props.theme.breakpoints.x}) {
     background: url(${(props) => props.bgColumn}) no-repeat;
     background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
-    background-size: contain;
+    background-size: cover;
 
     ${(props) =>
       props.bgColumn &&
@@ -125,29 +131,40 @@ const Section = styled.section`
       padding-bottom: 0;
     `}
 
-  @media screen and (min-width: ${(props) => props.theme.breakpoints.x}) {
-    background: url(${(props) => props.bgSection}) no-repeat;
-    background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
-    background-size: cover;
-    background-attachment: fixed;
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.m}) {
+    // background: url(${(props) => props.bgSection}) no-repeat;
+    // background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
+    // background-size: cover;
+    // background-attachment: fixed;
     ${(props) =>
       props.bgSection &&
       css`
-        .container {
+        min-height: 430px;
+        &.black .container {
           color: #fff;
           h2,
           h3 {
             color: #fff;
           }
-          &:before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            top: 0;
-            left: 0;
-          }
+        }
+      `}
+
+    ${(props) =>
+      props.isHalfBg &&
+      css`
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: 50%;
+          height: 100%;
+          background: url(${(props) => props.bgSection}) no-repeat;
+          background-attachment: ${(props) => (props.isBgFixed ? 'fixed' : 'initial')};
+          background-size: ${(props) => (props.isBgFixed ? '100%' : 'cover')};
+          top: 0;
+          left: ${(props) => (props.bgPosition === 'left' ? 0 : '50%')};
+          opacity: 0.6;
         }
       `}
   }

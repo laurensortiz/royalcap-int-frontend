@@ -38,13 +38,25 @@ const HeroContainer = styled.div`
     background: rgb(0, 0, 0);
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 21%, rgba(0, 0, 0, 0) 87%);
   }
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 19%, rgba(0, 0, 0, 0) 84%);
+  }
 `
 
 const Header = styled.header`
   background: url(${(props) => props.imagePath}) no-repeat;
   background-size: cover;
   //background-attachment: fixed;
-  background-position: center;
+  background-position: center 30%;
   overflow: hidden;
   color: #fff;
   box-sizing: border-box;

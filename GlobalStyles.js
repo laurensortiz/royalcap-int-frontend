@@ -5310,6 +5310,14 @@ const GlobalStyle = createGlobalStyle`${() => css`
       }
     }
   }
+
+  section,
+  .section {
+    &.white {
+      background: #fff;
+    }
+  }
+
   .text-field {
     padding: 15px;
     width: 100%;
@@ -5323,6 +5331,29 @@ const GlobalStyle = createGlobalStyle`${() => css`
   p.error {
     color: red !important;
   }
+
+  .bg-orange-600 {
+    &.text-white,
+    svg {
+      color: #031329 !important;
+    }
+  }
+
+  .container-fluid {
+    max-width: 1140px;
+  }
+
+  .image-style-align-center {
+    margin: auto;
+  }
+
+  .ant-modal-body {
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: #fff;
+    }
 `}`
 
 export default GlobalStyle

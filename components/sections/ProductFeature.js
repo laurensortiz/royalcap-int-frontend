@@ -20,7 +20,7 @@ const ProductFeature = ({ data }) => {
   return (
     <ProductFeatureSection isHome={data.isHome || false} className={data.bgClass}>
       <Content>
-        <RowWrapper justify="center" gutter={[16, 24]} type="flux">
+        <RowWrapper justify="center">
           {data.productFeature.map((productFeature) => (
             <ColWrapper key={productFeature.id} xs={20} md={5}>
               <Box>
@@ -68,6 +68,7 @@ const Box = styled.div`
   position: relative;
   font-weight: 400;
   font-size: 0.875rem;
+  margin: 8px;
 `
 
 const ProductLink = styled.div`
