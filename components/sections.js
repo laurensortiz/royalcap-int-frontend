@@ -27,6 +27,7 @@ import CountryListFeature from 'components/sections/CountryListFeature'
 import SectionFeatureColumns from 'components/sections/SectionFeatureColumns'
 import ContactForm from 'components/sections/ContactForm'
 import AccountForm from 'components/sections/AccountForm'
+import SectionTabs from 'components/sections/SectionTabs'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -56,6 +57,7 @@ const sectionComponents = {
   'sections.section-feature-columns': SectionFeatureColumns,
   'sections.contact-form': ContactForm,
   'sections.account-form': AccountForm,
+  'sections.tabs': SectionTabs,
 }
 
 // Display a section individually
