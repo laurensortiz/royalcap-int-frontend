@@ -10,10 +10,6 @@ export async function getLocalizedPage(targetLocale, pageContext) {
 
 export function localizePath(page) {
   const { locale, defaultLocale, slug } = page
-  console.log('[=====  test  =====>')
-  console.log(locale)
-  console.log(defaultLocale)
-  console.log('<=====  /test  =====]')
 
   if (locale === defaultLocale) {
     // The default locale is not prefixed
