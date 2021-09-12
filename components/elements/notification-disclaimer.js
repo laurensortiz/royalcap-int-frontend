@@ -43,8 +43,8 @@ const NotificationDisclaimer = ({
     <ModalBase>
       <Modal
         title={title || ''}
-        visible={isDisclaimerVisible}
         width={'90%'}
+        visible={true}
         centered={centered || false}
         okText={btnOkText || 'OK'}
         cancelText={btnCloseText || 'Cancel'}

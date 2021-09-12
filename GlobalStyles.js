@@ -5344,7 +5344,9 @@ const GlobalStyle = createGlobalStyle`${() => css`
   }
 
   .image-style-align-center {
-    margin: auto;
+   img {
+     margin: auto;
+   }
   }
 
   .ant-modal-body {

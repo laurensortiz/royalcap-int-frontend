@@ -4,11 +4,11 @@ import InnerHTML from 'dangerously-set-html-content'
 
 const EmbededCode = ({ data }) => {
   return (
-    <Section className={`section ${data.bgClass || ''}`}>
+    <Section className={`section ${data.bgClass || ''} ${data.classname || ''}`}>
       <div className="content">
         {data.Code.map((item) => (
           <Row key={item.id} justify="center">
-            <Col>
+            <Col xs={24}>
               <InnerHTML key={item.id} html={item.code} />
             </Col>
           </Row>
@@ -18,34 +18,9 @@ const EmbededCode = ({ data }) => {
   )
 }
 
-const LinkWrapper = styled.div`
-  text-align: center;
-  padding: 50px 0 0;
-`
-
-const Section = styled.section``
-
-const Box = styled.div`
-  display: flex;
-  background-color: #fff;
-  border-radius: 6px;
-
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  padding: 30px;
-
-  span {
-    display: flex;
-  }
-
-  i {
-    margin-right: 10px;
-  }
-
-  h4 {
-    font-size: 0.875rem;
-    line-height: 1.0625rem;
+const Section = styled.section`
+  &.no-padding {
+    padding: 0;
   }
 `
 

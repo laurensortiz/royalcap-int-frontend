@@ -13,6 +13,8 @@ const LeadForm = ({ data }) => {
 
   const ContactSchema = yup.object().shape({
     email: yup.string().email().required(),
+    name: yup.string().required(),
+    lastName: yup.string().required(),
   })
 
   return (
@@ -26,7 +28,7 @@ const LeadForm = ({ data }) => {
         )}
 
         <Row gutter={[16, 16]} justify={'space-between'} align={'middle'}>
-          <Col xs={24} md={10}>
+          <Col xs={24} md={24}>
             <div className="about_list">
               {/* Start: Heading */}
               {data.title && (
@@ -41,10 +43,12 @@ const LeadForm = ({ data }) => {
               )}
             </div>
           </Col>
-          <Col xs={24} sm={10}>
+          <Col xs={24} sm={24}>
             <Formik
               initialValues={{
                 email: '',
+                name: '',
+                lastName: '',
               }}
               validationSchema={ContactSchema}
               onSubmit={async (values, { setSubmitting, setErrors }) => {
@@ -58,6 +62,8 @@ const LeadForm = ({ data }) => {
                     method: 'POST',
                     body: JSON.stringify({
                       email: values.email,
+                      name: values.name,
+                      lastName: values.lastName,
                     }),
                   })
                   setIsSuccess(true)
@@ -73,7 +79,25 @@ const LeadForm = ({ data }) => {
               {({ errors, touched, isSubmitting }) => (
                 <Form>
                   <Row gutter={[16, 16]} align={'middle'}>
-                    <Col xs={24} md={17}>
+                    <Col xs={24} md={7}>
+                      <Field
+                        type="name"
+                        name="name"
+                        placeholder={data.namePlaceholder}
+                        className={`text-field ${errors.name && touched.name && 'has-error'}`}
+                      />
+                    </Col>
+                    <Col xs={24} md={7}>
+                      <Field
+                        type="lastName"
+                        name="lastName"
+                        placeholder={data.lastNamePlaceholder}
+                        className={`text-field ${
+                          errors.lastName && touched.lastName && 'has-error'
+                        }`}
+                      />
+                    </Col>
+                    <Col xs={24} md={7}>
                       <Field
                         type="email"
                         name="email"
@@ -81,7 +105,7 @@ const LeadForm = ({ data }) => {
                         className={`text-field ${errors.email && touched.email && 'has-error'}`}
                       />
                     </Col>
-                    <Col xs={24} md={7}>
+                    <Col xs={24} md={3}>
                       <Button
                         type="submit"
                         htmlType="submit"

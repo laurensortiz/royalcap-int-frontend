@@ -5,6 +5,7 @@ import NotificationBanner from './elements/notification-banner'
 import NotificationDisclaimer from './elements/notification-disclaimer'
 import FooterDisclaimer from 'components/sections/FooterDisclaimer'
 import Widget from 'components/UI/Widget'
+import LeadForm from 'components/sections/lead-form'
 
 const Layout = ({ children, global, pageContext }) => {
   const {
@@ -14,6 +15,7 @@ const Layout = ({ children, global, pageContext }) => {
     notificationDisclaimer,
     footerDisclaimer,
     globalLinks,
+    leadForm,
   } = global
 
   return (
@@ -35,6 +37,7 @@ const Layout = ({ children, global, pageContext }) => {
         <div>{children}</div>
       </div>
       {/* Aligned to the bottom */}
+      {leadForm && <LeadForm data={leadForm} />}
 
       {footerDisclaimer && <FooterDisclaimer data={footerDisclaimer} />}
 

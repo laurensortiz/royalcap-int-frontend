@@ -13,6 +13,7 @@ const AccountForm = ({ data }) => {
 
   const ContactSchema = yup.object().shape({
     name: yup.string().required(),
+    country: yup.string().required(),
     email: yup.string().email().required(),
     accountType: yup.string().required(),
     termsAndConditions: yup.bool().oneOf([true], 'Requerido'),
@@ -50,6 +51,9 @@ const AccountForm = ({ data }) => {
             initialValues={{
               name: '',
               email: '',
+              country: '',
+              phoneNumber: '',
+              jobTitle: '',
               accountType: '',
               termsAndConditions: false,
             }}
@@ -65,6 +69,9 @@ const AccountForm = ({ data }) => {
                   method: 'POST',
                   body: JSON.stringify({
                     name: values.name,
+                    country: values.country,
+                    phoneNumber: values.phoneNumber,
+                    jobTitle: values.jobTitle,
                     email: values.email,
                     accountType: values.accountType,
                   }),
@@ -103,9 +110,41 @@ const AccountForm = ({ data }) => {
                     </Col>
                   </Row>
                   <Row gutter={[16, 16]}>
-                    <Col xs={24}>
+                    <Col xs={24} md={12}>
+                      <Label>{data.phoneNumberPlaceholder}</Label>
+                      <Field
+                        type="name"
+                        name="phoneNumber"
+                        placeholder={data.phoneNumberPlaceholder}
+                        className={`text-field ${
+                          errors.phoneNumber && touched.phoneNumber && 'has-error'
+                        }`}
+                      />
+                    </Col>
+                    <Col xs={24} md={12}>
+                      <Label>{data.countryPlaceholder}</Label>
+                      <Field
+                        type="name"
+                        name="country"
+                        placeholder={data.countryPlaceholder}
+                        className={`text-field ${errors.country && touched.country && 'has-error'}`}
+                      />
+                    </Col>
+                  </Row>
+                  <Row gutter={[16, 16]}>
+                    <Col xs={24} md={12}>
+                      <Label>{data.jobTitlePlaceholder}</Label>
+                      <Field
+                        type="name"
+                        name="jobTitle"
+                        placeholder={data.jobTitlePlaceholder}
+                        className={`text-field ${
+                          errors.jobTitle && touched.jobTitle && 'has-error'
+                        }`}
+                      />
+                    </Col>
+                    <Col xs={24} md={12}>
                       <Label>{data.accountTypePlaceholder}</Label>
-                      <Label>{data.categoryPlaceholder}</Label>
                       <Field
                         as="select"
                         name="accountType"

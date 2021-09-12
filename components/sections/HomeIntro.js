@@ -10,7 +10,7 @@ const HomeIntro = ({ data }) => {
               {/* Start: Heading */}
               <div className="base-header2">
                 <h1>
-                  <small>Royal Capital</small>
+                  <small>Royal Capital, Ltd</small>
                   {data.title}
                 </h1>
               </div>

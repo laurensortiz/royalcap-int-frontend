@@ -73,7 +73,9 @@ const MyApp = ({ Component, pageProps }) => {
 MyApp.getInitialProps = async (appContext) => {
   // Calls page's `getInitialProps` and fills `appProps.pageProps`
   const appProps = await App.getInitialProps(appContext)
-  const globalLocale = await getGlobalData(appContext.router.locale)
+  //TODO: Remove this line
+  const globalLocale = await getGlobalData('es')
+  //const globalLocale = await getGlobalData(appContext.router.locale)
 
   return {
     ...appProps,
