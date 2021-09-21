@@ -1,6 +1,10 @@
-export function getStrapiMedia(url) {
+export function getStrapiMedia(url, isFile) {
   if (url == null) {
     return null
+  }
+
+  if (isFile) {
+    return `${process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'}/uploads/${url}`
   }
 
   // Return the full URL if the media is hosted on an external provider
