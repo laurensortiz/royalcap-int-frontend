@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Navbar from './elements/navbar'
 import Footer from './Footer'
 import NotificationBanner from './elements/notification-banner'
+import NotificationAlert from './elements/notification-alert'
 import NotificationDisclaimer from './elements/notification-disclaimer'
 import FooterDisclaimer from 'components/sections/FooterDisclaimer'
 import Widget from 'components/UI/Widget'
@@ -16,6 +17,7 @@ const Layout = ({ children, global, pageContext }) => {
     footerDisclaimer,
     globalLinks,
     leadForm,
+    notification,
   } = global
 
   return (
@@ -38,6 +40,7 @@ const Layout = ({ children, global, pageContext }) => {
       </div>
       {/* Aligned to the bottom */}
       {leadForm && <LeadForm data={leadForm} />}
+      {notification && <NotificationAlert data={notification} />}
 
       {footerDisclaimer && <FooterDisclaimer data={footerDisclaimer} />}
 

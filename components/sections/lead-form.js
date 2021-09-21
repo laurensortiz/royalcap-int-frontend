@@ -3,8 +3,9 @@ import { fetchAPI } from 'utils/api'
 import * as yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { Markdown, Row, Col, Alert, Button } from 'library'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { ContainerOutlined } from '@ant-design/icons'
+import MediaPath from '../../helpers/mediaPath'
 
 const LeadForm = ({ data }) => {
   const [loading, setLoading] = useState(false)
@@ -18,7 +19,11 @@ const LeadForm = ({ data }) => {
   })
 
   return (
-    <Section className={`main-section ${data.bgClass || 'black'}`}>
+    <Section
+      className={`main-section ${data.bgClass || 'black'}`}
+      bgSection={MediaPath(data.bgSection && data.bgSection.url)}
+      id={'newsletter'}
+    >
       <div className="container">
         {isSuccess && (
           <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
@@ -134,6 +139,40 @@ const Section = styled.section`
 
   .text-field {
     padding: 7px 15px;
+  }
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.m}) {
+    // background: url(${(props) => props.bgSection}) no-repeat;
+    // background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
+    // background-size: cover;
+    // background-attachment: fixed;
+    ${(props) =>
+      props.bgSection &&
+      css`
+        &.black .container {
+          color: #fff;
+
+          h2,
+          h3 {
+            color: #fff;
+          }
+        }
+
+        position: relative;
+
+        &:before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: url(${(props) => props.bgSection}) no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+          top: 0;
+          left: 0;
+          opacity: 0.1;
+        }
+      `}
   }
 `
 
