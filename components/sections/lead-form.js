@@ -63,6 +63,7 @@ const LeadForm = ({ data }) => {
                   setErrors({ api: null })
                   setIsSuccess(false)
                   setIsError(false)
+
                   await fetchAPI('/lead-form-submissions', {
                     method: 'POST',
                     body: JSON.stringify({

@@ -92,7 +92,7 @@ const Footer = ({ footer, logo, contactInfo }) => {
           <div className="subfooter">
             <div className="copyright_text">
               {' '}
-              &copy; {new Date().getFullYear()} RC LTD. All rights reserved.{' '}
+              &copy; {new Date().getFullYear()} Royal Capital LTD. All rights reserved.{' '}
             </div>
 
             {/* SOCIAL ICON */}
