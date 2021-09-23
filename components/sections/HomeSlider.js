@@ -85,6 +85,7 @@ const Slider = ({ data }) => {
                       loop={true}
                       playbackRate="0.5"
                       ref={videoEl}
+                      type="video/mp4"
                     />
                   )}
                   <SliderContent className="slider_item_tb">
