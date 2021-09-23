@@ -31,6 +31,7 @@ const BrokerRegistrationFeature = ({ data }) => {
             loop={true}
             playbackRate="1"
             ref={videoEl}
+            type="video/mp4"
           />
         )}
         <div className="slider_data_tb">
