@@ -46,16 +46,16 @@ export function Markdown({ children, ...props }) {
           if (name === 'a') {
             const props = attributesToProps(attribs)
 
-            if (props.download) {
-              const fileName = props.href ? props.href.split('/')[2] : ''
-              const mediaPath = MediaPath(`${fileName}`, true)
-
-              return (
-                <Link href={`${mediaPath}`} isButton={true}>
-                  {fileName}
-                </Link>
-              )
-            }
+            // if (props.download) {
+            //   const fileName = props.href ? props.href.split('/')[2] : ''
+            //   const mediaPath = MediaPath(`${fileName}`, true)
+            //
+            //   return (
+            //     <Link href={`${mediaPath}`} isButton={true}>
+            //       {fileName}
+            //     </Link>
+            //   )
+            // }
 
             return (
               <Link {...props} isButton={true} ghostprimary>
