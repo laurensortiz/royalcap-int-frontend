@@ -20,20 +20,20 @@ const LocaleSwitch = ({ pageContext }) => {
   const handleLocaleChange = async (selectedLocale) => {
     // Persist the user's language preference
     // https://nextjs.org/docs/advanced-features/i18n-routing#leveraging-the-next_locale-cookie
-    //Cookies.set('NEXT_LOCALE', selectedLocale)
-    Cookies.set('NEXT_LOCALE', 'es')
-    //setLocale(selectedLocale)
-    setLocale('es')
+    Cookies.set('NEXT_LOCALE', selectedLocale)
+    //Cookies.set('NEXT_LOCALE', 'es')
+    setLocale(selectedLocale)
+    //setLocale('es')
   }
 
   const handleLocaleChangeRef = useRef(handleLocaleChange)
   useOnClickOutside(select, () => setShowing(false))
 
   useEffect(() => {
-    // const localeCookie = Cookies.get('NEXT_LOCALE')
+    const localeCookie = Cookies.get('NEXT_LOCALE')
     //TODO: delete this line Cookies.set
-    Cookies.set('NEXT_LOCALE', 'es')
-    const localeCookie = 'es'
+    // Cookies.set('NEXT_LOCALE', 'es')
+    // const localeCookie = 'es'
     if (!localeCookie) {
       handleLocaleChangeRef.current(router.locale)
     }
