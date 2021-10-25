@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { animateScroll } from 'react-scroll'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import { linkPropTypes, mediaPropTypes } from 'utils/types'
 import styled from 'styled-components'
 import { a } from 'react-router-dom'
 import NextImage from 'components/elements/image'
+import CustomLink from 'components/elements/custom-link'
 import { Markdown } from 'library'
 
 function ColumnContent({ title, children }) {
@@ -18,6 +20,7 @@ function ColumnContent({ title, children }) {
 const Footer = ({ footer, logo, contactInfo }) => {
   const [scroll, setScroll] = useState(0)
   const [top, setTop] = useState(0)
+  const router = useRouter()
 
   useEffect(() => {
     setTop(100)
@@ -57,7 +60,10 @@ const Footer = ({ footer, logo, contactInfo }) => {
                       <ul classes="recent-post helpful_post">
                         {column.links.map((link) => (
                           <li key={link.id}>
-                            <Anchor href={link.url}>{link.text}</Anchor>
+                            <CustomLink link={link} locale={router.locale}>
+                              <Anchor className="px-2 py-1">{link.text}</Anchor>
+                            </CustomLink>
+                            {/*<Anchor href={link.url}>{link.text}</Anchor>*/}
                           </li>
                         ))}
                       </ul>

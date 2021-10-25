@@ -78,7 +78,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
 
               {/* Locale Switch Desktop */}
               {pageContext.localizedPaths && (
-                <div className="hidden md:block" style={{ display: 'none' }}>
+                <div className="hidden md:block">
                   <LocaleSwitch pageContext={pageContext} />
                 </div>
               )}

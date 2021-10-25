@@ -166,7 +166,7 @@ const AccountForm = ({ data }) => {
                   </Row>
                   <Row>
                     <Col>
-                      <Link href={'/politicas-de-privacidad'}>
+                      <Link href={data.termsAndConditionLink || ''}>
                         <a target="_blank">{data.termsAndConditionsPlaceholder}</a>
                       </Link>
 
