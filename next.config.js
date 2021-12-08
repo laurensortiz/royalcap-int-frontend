@@ -6,11 +6,7 @@ module.exports = {
     domains: [
       {
         domain: 'royalcap-int.by',
-        defaultLocale: 'ru',
-        http: true,
-      },
-      {
-        domain: 'www.royalcap-int.by',
+        locales: ['ru'],
         defaultLocale: 'ru',
         http: true,
       },
