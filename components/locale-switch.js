@@ -16,7 +16,6 @@ const LocaleSwitch = ({ pageContext }) => {
   const router = useRouter()
   const [locale, setLocale] = useState()
   const [showing, setShowing] = useState(false)
-
   const handleLocaleChange = async (selectedLocale) => {
     // Persist the user's language preference
     // https://nextjs.org/docs/advanced-features/i18n-routing#leveraging-the-next_locale-cookie
@@ -61,36 +60,38 @@ const LocaleSwitch = ({ pageContext }) => {
   }, [locale, router, pageContext])
 
   return (
-    <div ref={select} className="relative ml-4 ">
-      <button
-        type="button"
-        className="hover:bg-primary-50 hover:text-primary-600 focus:bg-primary-50 focus:text-primary-600 focus:outline-none flex items-center justify-between px-2 py-2 cursor-pointer h-full rounded-md w-20"
-        onClick={() => setShowing(!showing)}
-      >
-        <WorldIcon />
-        <span className="capitalize">{locale}</span>
-        <MdExpandMore className="ml-1 text-primary-600" />
-      </button>
-      <div
-        className={`w-full bg-white p-1 mt-1 shadow-lg rounded-md ${
-          showing ? 'absolute' : 'hidden'
-        }`}
-      >
-        {pageContext.localizedPaths &&
-          pageContext.localizedPaths.map(({ href, locale }) => {
-            return (
-              <Link href={href} key={locale} locale={locale} role="option" passHref>
-                <p
-                  onClick={() => handleLocaleChange(locale)}
-                  className="capitalize hover:bg-primary-50 hover:text-primary-600  cursor-pointer p-2 rounded-md text-center hover:text-primary-600"
-                >
-                  {locale}
-                </p>
-              </Link>
-            )
-          })}
+    pageContext.locales.length > 1 && (
+      <div ref={select} className="relative ml-4 ">
+        <button
+          type="button"
+          className="hover:bg-primary-50 hover:text-primary-600 focus:bg-primary-50 focus:text-primary-600 focus:outline-none flex items-center justify-between px-2 py-2 cursor-pointer h-full rounded-md w-20"
+          onClick={() => setShowing(!showing)}
+        >
+          <WorldIcon />
+          <span className="capitalize">{locale}</span>
+          <MdExpandMore className="ml-1 text-primary-600" />
+        </button>
+        <div
+          className={`w-full bg-white p-1 mt-1 shadow-lg rounded-md ${
+            showing ? 'absolute' : 'hidden'
+          }`}
+        >
+          {pageContext.localizedPaths &&
+            pageContext.localizedPaths.map(({ href, locale }) => {
+              return (
+                <Link href={href} key={locale} locale={locale} role="option" passHref>
+                  <p
+                    onClick={() => handleLocaleChange(locale)}
+                    className="capitalize hover:bg-primary-50 hover:text-primary-600  cursor-pointer p-2 rounded-md text-center hover:text-primary-600"
+                  >
+                    {locale}
+                  </p>
+                </Link>
+              )
+            })}
+        </div>
       </div>
-    </div>
+    )
   )
 }
 
