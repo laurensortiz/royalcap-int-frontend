@@ -7,7 +7,6 @@ module.exports = {
       {
         domain: 'royalcap-int.by',
         defaultLocale: 'ru',
-        locales: ['ru'],
         http: true,
       },
       {
