@@ -7,6 +7,7 @@ import NotificationDisclaimer from './elements/notification-disclaimer'
 import FooterDisclaimer from 'components/sections/FooterDisclaimer'
 import Widget from 'components/UI/Widget'
 import LeadForm from 'components/sections/lead-form'
+import getFeatureFlag from 'helpers/getFeatureFlag'
 
 const Layout = ({ children, global, pageContext }) => {
   const {
@@ -18,7 +19,10 @@ const Layout = ({ children, global, pageContext }) => {
     globalLinks,
     leadForm,
     notification,
+    featureFlag,
   } = global
+
+  const isRussianActive = getFeatureFlag(featureFlag, 'russianLang')
 
   return (
     <div className="flex flex-col justify-between min-h-screen">
@@ -35,16 +39,21 @@ const Layout = ({ children, global, pageContext }) => {
           navbar={navbar}
           pageContext={pageContext}
           globalLinks={globalLinks}
+          featureFlag={featureFlag}
         />
         <div>{children}</div>
       </div>
       {/* Aligned to the bottom */}
-      {leadForm && <LeadForm data={leadForm} />}
+      {!isRussianActive.isActive && leadForm && <LeadForm data={leadForm} />}
       {notification && <NotificationAlert data={notification} />}
 
-      {footerDisclaimer && <FooterDisclaimer data={footerDisclaimer} />}
+      {!isRussianActive.isActive && footerDisclaimer && (
+        <FooterDisclaimer data={footerDisclaimer} />
+      )}
 
-      <Footer logo={navbar.logo} footer={footer} contactInfo={global.contactInfo} />
+      {!isRussianActive.isActive && (
+        <Footer logo={navbar.logo} footer={footer} contactInfo={global.contactInfo} />
+      )}
     </div>
   )
 }

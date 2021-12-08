@@ -7,15 +7,18 @@ import MobileNavMenu from './mobile-nav-menu'
 import CustomLink from './custom-link'
 import LocaleSwitch from '../locale-switch'
 import NextImage from 'components/elements/image'
+import getFeatureFlag from 'helpers/getFeatureFlag'
 
 import { Link } from 'library'
 
-const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
+const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
   const router = useRouter()
   const [mobileMenuIsShown, setMobileMenuIsShown] = useState(false)
 
   const loginButton = globalLinks.find((link) => link.slug === 'login')
   const createAccountButton = globalLinks.find((link) => link.slug === 'createAccount')
+
+  const isRussianActive = getFeatureFlag(featureFlag, 'russianLang')
 
   return (
     <>
@@ -32,62 +35,66 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks }) => {
               </Logo>
 
               {/* List of links on desktop */}
-              <NavList>
-                <ul className="list-none md:flex flex-row gap-4 items-baseline">
-                  {navbar.links.map((navLink) => (
-                    <li key={navLink.id} className="menu-item">
-                      <CustomLink link={navLink} locale={router.locale}>
-                        <div className="px-2 py-1">{navLink.text}</div>
-                      </CustomLink>
-                    </li>
-                  ))}
-                </ul>
-              </NavList>
-            </div>
-            <div className="flex">
-              {/* CTA button on desktop */}
-              <ActionContainer>
-                {loginButton && (
-                  <Link
-                    href={loginButton.url}
-                    target={loginButton.newTab ? '_blank' : ''}
-                    isButton={true}
-                  >
-                    {loginButton.text}
-                  </Link>
-                )}
-
-                {createAccountButton && (
-                  <Link href={createAccountButton.url} isButton={true} ghost>
-                    {createAccountButton.text}
-                  </Link>
-                )}
-              </ActionContainer>
-              {/* Locale Switch Mobile */}
-              {pageContext.localizedPaths && (
-                <div className="md:hidden" style={{ display: 'none' }}>
-                  <LocaleSwitch pageContext={pageContext} />
-                </div>
-              )}
-              {/* Hamburger menu on mobile */}
-              <MenuIconMobile>
-                <button onClick={() => setMobileMenuIsShown(true)} className="p-1">
-                  <MdMenu className="h-8 w-auto" />
-                </button>
-              </MenuIconMobile>
-
-              {/* Locale Switch Desktop */}
-              {pageContext.localizedPaths && (
-                <div className="hidden md:block">
-                  <LocaleSwitch pageContext={pageContext} />
-                </div>
+              {!isRussianActive.isActive && (
+                <NavList>
+                  <ul className="list-none md:flex flex-row gap-4 items-baseline">
+                    {navbar.links.map((navLink) => (
+                      <li key={navLink.id} className="menu-item">
+                        <CustomLink link={navLink} locale={router.locale}>
+                          <div className="px-2 py-1">{navLink.text}</div>
+                        </CustomLink>
+                      </li>
+                    ))}
+                  </ul>
+                </NavList>
               )}
             </div>
+            {!isRussianActive.isActive && (
+              <div className="flex">
+                {/* CTA button on desktop */}
+                <ActionContainer>
+                  {loginButton && (
+                    <Link
+                      href={loginButton.url}
+                      target={loginButton.newTab ? '_blank' : ''}
+                      isButton={true}
+                    >
+                      {loginButton.text}
+                    </Link>
+                  )}
+
+                  {createAccountButton && (
+                    <Link href={createAccountButton.url} isButton={true} ghost>
+                      {createAccountButton.text}
+                    </Link>
+                  )}
+                </ActionContainer>
+                {/* Locale Switch Mobile */}
+                {pageContext.localizedPaths && (
+                  <div className="md:hidden" style={{ display: 'none' }}>
+                    <LocaleSwitch pageContext={pageContext} />
+                  </div>
+                )}
+                {/* Hamburger menu on mobile */}
+                <MenuIconMobile>
+                  <button onClick={() => setMobileMenuIsShown(true)} className="p-1">
+                    <MdMenu className="h-8 w-auto" />
+                  </button>
+                </MenuIconMobile>
+
+                {/* Locale Switch Desktop */}
+                {pageContext.localizedPaths && (
+                  <div className="hidden md:block">
+                    <LocaleSwitch pageContext={pageContext} />
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </nav>
 
         {/* Mobile navigation menu panel */}
-        {mobileMenuIsShown && (
+        {!isRussianActive.isActive && mobileMenuIsShown && (
           <MobileNavMenu
             loginButton={loginButton}
             createAccountButton={createAccountButton}
