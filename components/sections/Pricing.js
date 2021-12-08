@@ -9,7 +9,7 @@ const Pricing = ({ data }) => {
     <div className="container py-12">
       <div className="base-header2">
         <h1>
-          <small>Precios</small>
+          <small>{data.smallTitle}</small>
           {data.title}
         </h1>
       </div>
