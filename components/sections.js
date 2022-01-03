@@ -28,6 +28,8 @@ import SectionFeatureColumns from 'components/sections/SectionFeatureColumns'
 import ContactForm from 'components/sections/ContactForm'
 import AccountForm from 'components/sections/AccountForm'
 import SectionTabs from 'components/sections/SectionTabs'
+import Sponsors from 'components/sections/Sponsors'
+import Webinars from 'components/sections/Webinars'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -58,6 +60,8 @@ const sectionComponents = {
   'sections.contact-form': ContactForm,
   'sections.account-form': AccountForm,
   'sections.tabs': SectionTabs,
+  'sections.sponsors': Sponsors,
+  'sections.webinars': Webinars,
 }
 
 // Display a section individually
