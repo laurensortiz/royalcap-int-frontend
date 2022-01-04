@@ -5,7 +5,7 @@ import NextImage from '../elements/image'
 
 const Hero = ({ data }) => {
   return (
-    <main className="container flex flex-col md:flex-row items-center justify-between py-12">
+    <main className="container flex flex-col md:flex-row items-center justify-between py-12" className={`${data.bgClass || ''}`}>
       {/* Left column for content */}
       <div className="flex-1 sm:pr-8">
         {/* Hero section label */}
