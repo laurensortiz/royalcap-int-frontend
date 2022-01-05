@@ -191,6 +191,7 @@ const FormWrapper = styled(Col)`
 const Label = styled.label`
   display: block;
   padding: 10px 0;
+  color: #fff;
 `
 
 export default WebinarRegistrationForm
