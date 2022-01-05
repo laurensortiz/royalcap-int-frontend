@@ -28,7 +28,7 @@ const Hero = ({ data }) => {
           </div>
           {/* Small rich text */}
           <div className="text-base md:text-sm mt-4 sm:mt-3 rich-text-hero">
-            <Markdown>{data.smallTextWithLink}</Markdown>
+            <RichText>{data.smallTextWithLink}</RichText>
           </div>
         </div>
         {/* Right column for the image */}
@@ -41,5 +41,12 @@ const Hero = ({ data }) => {
 }
 
 const Section = styled.section``
+
+const RichText = styled(Markdown)`
+  p {
+   font-size: 1em;
+   line-height: 1.8em;
+  }
+`
 
 export default Hero

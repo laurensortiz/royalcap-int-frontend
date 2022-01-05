@@ -149,6 +149,7 @@ const WebinarRegistrationForm = ({ data }) => {
                             name="terms"
                             type="checkbox"
                             className="mr-2"
+                            style={{ alignSelf: 'center' }}
                         />
                         <Label>{data.terms}</Label>
                     </Col>
@@ -168,9 +169,6 @@ const WebinarRegistrationForm = ({ data }) => {
                     </Col>
                   </Row>
                 </Form>
-                {/*<p className="error">*/}
-                {/*  {(errors.email && touched.email && errors.email) || errors.api}*/}
-                {/*</p>*/}
               </FormWrapper>
             )}
           </Formik>

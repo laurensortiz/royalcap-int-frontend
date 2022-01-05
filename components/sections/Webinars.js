@@ -1,6 +1,6 @@
 import NextImage from '../elements/image'
 import styled from 'styled-components'
-import { Card, Button, Markdown } from 'library'
+import { Card, Button, Markdown, Link } from 'library'
 
 const Webinars = ({ data }) => {
     return (
@@ -24,12 +24,13 @@ const Webinars = ({ data }) => {
             ))}
         </div>
         <div className="flex justify-center mt-4">
-            <Button
-            type="submit"
-            htmlType="submit"
-            >
-                Descargar Plataforma
-            </Button>
+            {data.btnLink.url && (
+              <ButtonContainer>
+                <Link href={data.btnLink.url} isButton={true}>
+                  {data.btnLink.text}
+                </Link>
+              </ButtonContainer>
+            )}
         </div>
       </div>
     )
@@ -50,4 +51,8 @@ const CardWrapper = styled(Card)`
     }
 `
 
-  export default Webinars
+const ButtonContainer = styled.div`
+  text-align: center;
+`
+
+export default Webinars

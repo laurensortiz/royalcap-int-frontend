@@ -13,7 +13,7 @@ const TradingType = ({ data }) => {
                         className="border-2 py-4 px-4 flex-1 md:w-lg"
                         > 
                             <h3>{trading.title}</h3>
-                            <RichText className="text-xl my-3">{trading.content}</RichText>
+                            <RichText className="my-3">{trading.content}</RichText>
                             <NextImage media={trading.picture} />
                         </div>
                     ))}
