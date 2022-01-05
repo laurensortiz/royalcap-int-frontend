@@ -1,4 +1,5 @@
 import NextImage from '../elements/image'
+import { Row, Col } from 'library'
 
 const Sponsors = ({ data }) => {
     return (
@@ -6,16 +7,13 @@ const Sponsors = ({ data }) => {
         <div className="base-header2">
           <h1>{data.title}</h1>
         </div>
-        <div className="flex flex-col lg:flex-row gap-4 lg:justify-center mt-6">
+        <Row justify="center" align="middle">
           {data.sponsorLogos.map((logo) => (
-            <div
-              key={logo.id}
-              className="border-2 py-4 px-4 flex-1 md:w-lg"
-            > 
+            <Col span={4} className="mr-5">
               <NextImage media={logo.logo} />
-            </div>
+            </Col>
           ))}
-        </div>
+        </Row>
         <div className="mt-3">
           {data.content} 
         </div>

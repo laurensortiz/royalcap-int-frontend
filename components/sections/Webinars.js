@@ -4,18 +4,23 @@ import { Card, Button, Markdown } from 'library'
 
 const Webinars = ({ data }) => {
     return (
-      <div className="main-section" style={{ background: '#f4f4f6' }}>
+      <div className="container py-12">
         <div className="base-header2">
           <h1>{data.title}</h1>
         </div>
         <div className="mt-3">
           <RichText className="text-xl">{data.content}</RichText>
         </div>
-        <div className="mt-4 gap-4">
+        <div className="flex flex-col lg:flex-row gap-4 lg:justify-center mt-6">
             {data.columnText.map((column) => (
-                <Card key={column.id} title={column.title} bordered={false}>
-                    <p>{column.text}</p>
-                </Card>
+                <CardWrapper 
+                    className="rounded-md border-2 py-4 px-4 flex-1 md:w-lg"
+                    key={column.id}
+                    title={column.title}
+                    bordered={false}
+                >
+                    <RichText>{column.text}</RichText>
+                </CardWrapper>
             ))}
         </div>
         <div className="flex justify-center mt-4">
@@ -35,13 +40,13 @@ const RichText = styled(Markdown)`
    font-size: 1em;
    line-height: 1.8em;
   }
-    .price {
-        p {
-            color: red;
-            &+p {
-                color: blue;
-            }
-        }
+`
+
+const CardWrapper = styled(Card)`
+    background: #f3f4f6;
+    color: #000;
+    .ant-card-head-title {
+        color: #000;
     }
 `
 

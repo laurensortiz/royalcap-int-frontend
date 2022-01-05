@@ -19,6 +19,7 @@ const WebinarRegistrationForm = ({ data }) => {
     occupation: yup.string().required(),
     isClient: yup.boolean(),
     username: yup.string(),
+    terms: yup.boolean().required()
   })
 
   return (
@@ -52,7 +53,8 @@ const WebinarRegistrationForm = ({ data }) => {
               country: '',
               occupation: '',
               isClient: false,
-              username: ''
+              username: '',
+              terms: false
             }}
             validationSchema={ContactSchema}
             onSubmit={async (values, { setSubmitting, setErrors }) => {
@@ -71,7 +73,8 @@ const WebinarRegistrationForm = ({ data }) => {
                     country: values.country,
                     occupation: values.occupation,
                     isClient: values.isClient,
-                    username: values.username
+                    username: values.username,
+                    terms: values.terms
                   }),
                 })
                 setIsSuccess(true)
@@ -89,50 +92,50 @@ const WebinarRegistrationForm = ({ data }) => {
                 <Form>
                   <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
-                      <Label>{data.fullName}</Label>
+                      <Label>{data.fullNamePlaceholder}</Label>
                       <Field
                         type="fullname"
                         name="fullname"
-                        placeholder={data.fullName}
+                        placeholder={data.fullNamePlaceholder}
                         className={`text-field ${errors.fullname && touched.fullname && 'has-error'}`}
                       />
                     </Col>
                   </Row>
                   <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
-                      <Label>{data.email}</Label>
+                      <Label>{data.emailPlaceholder}</Label>
                       <Field
                         type="email"
                         name="email"
-                        placeholder={data.email}
+                        placeholder={data.emailPlaceholder}
                         className={`text-field ${errors.email && touched.email && 'has-error'}`}
                       />
                     </Col>
                     <Col xs={24} md={12}>
-                      <Label>{data.phone}</Label>
+                      <Label>{data.phonePlaceholder}</Label>
                       <Field
                         type="phone"
                         name="phone"
-                        placeholder={data.phone}
+                        placeholder={data.phonePlaceholder}
                         className={`text-field ${errors.phone && touched.phone && 'has-error'}`}
                       />
                     </Col>
                   </Row>
                   <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
-                      <Label>{data.country}</Label>
+                      <Label>{data.countryPlaceholder}</Label>
                       <Field
                         type="country"
                         name="country"
-                        placeholder={data.country}
+                        placeholder={data.countryPlaceholder}
                         className={`text-field ${errors.country && touched.country && 'has-error'}`}
                       />
                     </Col>
                     <Col xs={24} md={12}>
-                      <Label>{data.occupation}</Label>
+                      <Label>{data.occupationPlaceholder}</Label>
                       <Field
                         name="occupation"
-                        placeholder={data.occupation}
+                        placeholder={data.occupationPlaceholder}
                         className={`text-field ${
                           errors.occupation && touched.occupation && 'has-error'
                         }`}
@@ -140,7 +143,18 @@ const WebinarRegistrationForm = ({ data }) => {
                     </Col>
                   </Row>
 
-                  <Row justify="center">
+                  <Row type="flex" align="middle">
+                    <Col className="flex"  align="middle">
+                        <Field
+                            name="terms"
+                            type="checkbox"
+                            className="mr-2"
+                        />
+                        <Label>{data.terms}</Label>
+                    </Col>
+                  </Row>
+
+                  <Row justify="center" className="mt-3">
                     <Col>
                       <Button
                         type="submit"
