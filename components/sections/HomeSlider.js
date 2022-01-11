@@ -69,7 +69,7 @@ const Slider = ({ data }) => {
       <div className="slider_home">
         <SlickSlider settings={settings}>
           {data.slider.map((item) => {
-            const isSliderImage = item.bg.mime === 'image/jpeg'
+            const isSliderImage = item?.bg?.mime === 'image/jpeg'
             return (
               <div className={`slider-${item.id}`} key={item.id}>
                 <SingleSlider

@@ -44,14 +44,16 @@ const Pricing = ({ data }) => {
               {plan.price === 0 ? 'Free ' : `${Currency.format(plan.price)} `}
               <span className="text-base font-medium">{plan.pricePeriod}</span>
             </p>
-            <FeatureList className="mt-4 flex flex-col gap-3">
-              {plan.features.map((feature) => (
-                <li className="flex flex-row justify-between items-center" key={feature.id}>
-                  <span>{feature.name}</span>
-                  <MdCheckBox className="h-6 w-auto text-gray-900" />
-                </li>
-              ))}
-            </FeatureList>
+            {plan.features.length > 0 && (
+              <FeatureList className="mt-4 flex flex-col gap-3">
+                {plan.features.map((feature) => (
+                  <li className="flex flex-row justify-between items-center" key={feature.id}>
+                    <span>{feature.name}</span>
+                    <MdCheckBox className="h-6 w-auto text-gray-900" />
+                  </li>
+                ))}
+              </FeatureList>
+            )}
             {plan.btnLink.url && (
               <ButtonContainer>
                 <Link href={plan.btnLink.url} isButton={true}>
