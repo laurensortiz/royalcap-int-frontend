@@ -18,13 +18,14 @@ const Hero = ({ data }) => {
           <p className="text-xl mb-6">{data.description}</p>
           {/* Buttons row */}
           <div className="flex flex-row flex-wrap gap-4">
-            {data.buttons.length > 0 && data.buttons.map((button) => (
-              <ButtonLink
-                button={button}
-                appearance={getButtonAppearance(button.type, 'light')}
-                key={button.id}
-              />
-            ))}
+            {data.buttons.length > 0 &&
+              data.buttons.map((button) => (
+                <ButtonLink
+                  button={button}
+                  appearance={getButtonAppearance(button.type, 'light')}
+                  key={button.id}
+                />
+              ))}
           </div>
           {/* Small rich text */}
           <div className="text-base md:text-sm mt-4 sm:mt-3 rich-text-hero">
@@ -44,8 +45,8 @@ const Section = styled.section``
 
 const RichText = styled(Markdown)`
   p {
-   font-size: 1em;
-   line-height: 1.8em;
+    font-size: 1em;
+    line-height: 1.8em;
   }
 `
 
