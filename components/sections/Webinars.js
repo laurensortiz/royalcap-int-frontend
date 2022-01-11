@@ -1,4 +1,3 @@
-import NextImage from '../elements/image'
 import styled from 'styled-components'
 import { Card, Button, Markdown, Link } from 'library'
 

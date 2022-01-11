@@ -6,20 +6,16 @@ import { Markdown, Row, Col, Alert, Button } from 'library'
 import styled from 'styled-components'
 
 const WebinarRegistrationForm = ({ data }) => {
-    console.log('webinar registration form: ', data);
   const [loading, setLoading] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [isError, setIsError] = useState(false)
 
   const ContactSchema = yup.object().shape({
-    fullname: yup.string().required(),
+    fullName: yup.string().required(),
     email: yup.string().email().required(),
-    phone: yup.string().email().required(),
     country: yup.string().required(),
     occupation: yup.string().required(),
-    isClient: yup.boolean(),
-    username: yup.string(),
-    terms: yup.boolean().required()
+    terms: yup.bool().oneOf([true], 'Requerido'),
   })
 
   return (
@@ -52,14 +48,14 @@ const WebinarRegistrationForm = ({ data }) => {
               phone: '',
               country: '',
               occupation: '',
-              isClient: false,
+              isClient: '',
               username: '',
               terms: false
             }}
             validationSchema={ContactSchema}
             onSubmit={async (values, { setSubmitting, setErrors }) => {
               setLoading(true)
-
+            
               try {
                 setErrors({ api: null })
                 setIsSuccess(false)
@@ -95,13 +91,11 @@ const WebinarRegistrationForm = ({ data }) => {
                       <Label>{data.fullNamePlaceholder}</Label>
                       <Field
                         type="fullname"
-                        name="fullname"
+                        name="fullName"
                         placeholder={data.fullNamePlaceholder}
-                        className={`text-field ${errors.fullname && touched.fullname && 'has-error'}`}
+                        className={`text-field ${errors.fullName && touched.fullName && 'has-error'}`}
                       />
                     </Col>
-                  </Row>
-                  <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
                       <Label>{data.emailPlaceholder}</Label>
                       <Field
@@ -111,6 +105,8 @@ const WebinarRegistrationForm = ({ data }) => {
                         className={`text-field ${errors.email && touched.email && 'has-error'}`}
                       />
                     </Col>
+                  </Row>
+                  <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
                       <Label>{data.phonePlaceholder}</Label>
                       <Field
@@ -120,8 +116,6 @@ const WebinarRegistrationForm = ({ data }) => {
                         className={`text-field ${errors.phone && touched.phone && 'has-error'}`}
                       />
                     </Col>
-                  </Row>
-                  <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
                       <Label>{data.countryPlaceholder}</Label>
                       <Field
@@ -131,6 +125,8 @@ const WebinarRegistrationForm = ({ data }) => {
                         className={`text-field ${errors.country && touched.country && 'has-error'}`}
                       />
                     </Col>
+                  </Row>
+                  <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
                       <Label>{data.occupationPlaceholder}</Label>
                       <Field
@@ -138,6 +134,32 @@ const WebinarRegistrationForm = ({ data }) => {
                         placeholder={data.occupationPlaceholder}
                         className={`text-field ${
                           errors.occupation && touched.occupation && 'has-error'
+                        }`}
+                      />
+                    </Col>
+                    <Col xs={24} md={12}>
+                      <Label>{data.isClientPlaceholder}</Label>
+                      <Field
+                        as="select"
+                        name="isClient"
+                        placeholder={data.isClientPlaceholder}
+                        className={`text-field ${errors.isClient && touched.isClient && 'has-error'}`}
+                      >
+                        <option value=""></option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
+                      </Field>
+                    </Col>
+                  </Row>
+
+                  <Row gutter={[16, 16]}>
+                    <Col xs={24} md={12}>
+                      <Label>{data.usernamePlaceholder}</Label>
+                      <Field
+                        name="username"
+                        placeholder={data.usernamePlaceholder}
+                        className={`text-field ${
+                          errors.username && touched.username && 'has-error'
                         }`}
                       />
                     </Col>

@@ -2,9 +2,9 @@ import NextImage from '../elements/image'
 import styled from 'styled-components'
 import { Markdown } from 'library'
 import classNames from 'classnames'
+import MediaPath from 'helpers/mediaPath'
 
 const WebinarPricing = ({ data }) => {
-  console.log('data: ', data);
   return (
     <div className="main-section" style={{ background: '#f4f4f6' }}>
       <div className="container py-12">
@@ -20,8 +20,8 @@ const WebinarPricing = ({ data }) => {
                 'rounded-md border-2 py-4 px-4 flex-1 md:w-lg bg-gray-100 text-gray-900 border-gray-300',
               )}
             > 
-              <NextImage media={pricing.pricingHero}/>
-              <h3>{pricing.plan}</h3>
+              <ImageCard className="about_img" imagePath={MediaPath(pricing.pricingHero.url)} />
+              <h3 className="mt-3">{pricing.plan}</h3>
               <h5>{pricing.time}</h5>
               <RichText className="text-xl mt-3">
                 {pricing.description}
@@ -47,6 +47,13 @@ const RichText = styled(Markdown)`
         }
     }
 }
+`
+
+const ImageCard = styled.div`
+  width: 100%;
+  height: 210px;
+  background: url(${(props) => props.imagePath}) no-repeat;
+  background-size: cover;
 `
 
 export default WebinarPricing

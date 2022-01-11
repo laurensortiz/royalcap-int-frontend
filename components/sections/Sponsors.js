@@ -8,8 +8,8 @@ const Sponsors = ({ data }) => {
           <h1>{data.title}</h1>
         </div>
         <Row justify="center" align="middle">
-          {data.sponsorLogos.map((logo) => (
-            <Col span={4} className="mr-5">
+          {data.sponsorLogos.map((logo, id) => (
+            <Col key={id} span={4} className="mr-5">
               <NextImage media={logo.logo} />
             </Col>
           ))}
