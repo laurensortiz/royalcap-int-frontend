@@ -50,12 +50,12 @@ const WebinarRegistrationForm = ({ data }) => {
               occupation: '',
               isClient: '',
               username: '',
-              terms: false
+              terms: false,
             }}
             validationSchema={ContactSchema}
             onSubmit={async (values, { setSubmitting, setErrors }) => {
               setLoading(true)
-            
+
               try {
                 setErrors({ api: null })
                 setIsSuccess(false)
@@ -70,7 +70,7 @@ const WebinarRegistrationForm = ({ data }) => {
                     occupation: values.occupation,
                     isClient: values.isClient,
                     username: values.username,
-                    terms: values.terms
+                    terms: values.terms,
                   }),
                 })
                 setIsSuccess(true)
@@ -93,7 +93,9 @@ const WebinarRegistrationForm = ({ data }) => {
                         type="fullname"
                         name="fullName"
                         placeholder={data.fullNamePlaceholder}
-                        className={`text-field ${errors.fullName && touched.fullName && 'has-error'}`}
+                        className={`text-field ${
+                          errors.fullName && touched.fullName && 'has-error'
+                        }`}
                       />
                     </Col>
                     <Col xs={24} md={12}>
@@ -143,7 +145,9 @@ const WebinarRegistrationForm = ({ data }) => {
                         as="select"
                         name="isClient"
                         placeholder={data.isClientPlaceholder}
-                        className={`text-field ${errors.isClient && touched.isClient && 'has-error'}`}
+                        className={`text-field ${
+                          errors.isClient && touched.isClient && 'has-error'
+                        }`}
                       >
                         <option value=""></option>
                         <option value="si">Si</option>
@@ -166,14 +170,14 @@ const WebinarRegistrationForm = ({ data }) => {
                   </Row>
 
                   <Row type="flex" align="middle">
-                    <Col className="flex"  align="middle">
-                        <Field
-                            name="terms"
-                            type="checkbox"
-                            className="mr-2"
-                            style={{ alignSelf: 'center' }}
-                        />
-                        <Label>{data.terms}</Label>
+                    <Col className="flex" align="middle">
+                      <Field
+                        name="terms"
+                        type="checkbox"
+                        className="mr-2"
+                        style={{ alignSelf: 'center' }}
+                      />
+                      <Label>{data.terms}</Label>
                     </Col>
                   </Row>
 
