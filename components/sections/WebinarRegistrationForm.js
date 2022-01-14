@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { Markdown, Row, Col, Alert, Button } from 'library'
 import styled from 'styled-components'
+import countryCodes from '../../utils/countries.json'
 
 const WebinarRegistrationForm = ({ data }) => {
   const [loading, setLoading] = useState(false)
@@ -121,11 +122,16 @@ const WebinarRegistrationForm = ({ data }) => {
                     <Col xs={24} md={12}>
                       <Label>{data.countryPlaceholder}</Label>
                       <Field
+                        as="select"
                         type="country"
                         name="country"
                         placeholder={data.countryPlaceholder}
                         className={`text-field ${errors.country && touched.country && 'has-error'}`}
-                      />
+                      >
+                        {countryCodes.countries.map(({code, name}) => (
+                          <option key={code} value={name}>{name}</option>
+                        ))}
+                      </Field>
                     </Col>
                   </Row>
                   <Row gutter={[16, 16]}>
@@ -198,6 +204,12 @@ const WebinarRegistrationForm = ({ data }) => {
               </FormWrapper>
             )}
           </Formik>
+        </Row>
+
+        <Row>
+          {isSuccess && (
+            <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
+          )}
         </Row>
       </div>
     </Section>
