@@ -74,6 +74,21 @@ const WebinarRegistrationForm = ({ data }) => {
                     terms: values.terms,
                   }),
                 })
+
+                await fetchAPI('/webinar-registration-forms/email', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    fullName: values.fullName,
+                    email: values.email,
+                    phone: values.phone,
+                    country: values.country,
+                    occupation: values.occupation,
+                    isClient: values.isClient,
+                    username: values.username,
+                    terms: values.terms,
+                    to: '',
+                  }),
+                })
                 setIsSuccess(true)
               } catch (err) {
                 setIsError(true)
@@ -128,8 +143,10 @@ const WebinarRegistrationForm = ({ data }) => {
                         placeholder={data.countryPlaceholder}
                         className={`text-field ${errors.country && touched.country && 'has-error'}`}
                       >
-                        {countryCodes.countries.map(({code, name}) => (
-                          <option key={code} value={name}>{name}</option>
+                        {countryCodes.countries.map(({ code, name }) => (
+                          <option key={code} value={name}>
+                            {name}
+                          </option>
                         ))}
                       </Field>
                     </Col>
@@ -206,11 +223,9 @@ const WebinarRegistrationForm = ({ data }) => {
           </Formik>
         </Row>
 
-        <Row>
-          {isSuccess && (
-            <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
-          )}
-        </Row>
+        {isSuccess && (
+          <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
+        )}
       </div>
     </Section>
   )
