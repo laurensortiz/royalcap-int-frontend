@@ -128,8 +128,8 @@ const WebinarRegistrationForm = ({ data }) => {
                         placeholder={data.countryPlaceholder}
                         className={`text-field ${errors.country && touched.country && 'has-error'}`}
                       >
-                        {countryCodes.countries.map(country => (
-                          <option key={country.code} value={country.name}>{country.name}</option>
+                        {countryCodes.countries.map(({code, name}) => (
+                          <option key={code} value={name}>{name}</option>
                         ))}
                       </Field>
                     </Col>
