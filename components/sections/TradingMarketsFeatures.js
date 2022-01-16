@@ -1,3 +1,5 @@
+import { Markdown } from 'library'
+
 const TradingMarketsFeatures = ({ data }) => {
   return (
     <div className="container py-12">
@@ -5,7 +7,7 @@ const TradingMarketsFeatures = ({ data }) => {
         <h1>{data.title}</h1>
       </div>
       <div className="mt-3">
-        <RichText className="text-xl">{data.content}</RichText>
+        <Markdown className="text-xl">{data.content}</Markdown>
       </div>
     </div>
   )
