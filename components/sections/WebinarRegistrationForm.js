@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { Markdown, Row, Col, Alert, Button } from 'library'
 import styled from 'styled-components'
+import countryCodes from '../../utils/countries.json'
 
 const WebinarRegistrationForm = ({ data }) => {
   const [loading, setLoading] = useState(false)
@@ -73,6 +74,21 @@ const WebinarRegistrationForm = ({ data }) => {
                     terms: values.terms,
                   }),
                 })
+
+                await fetchAPI('/webinar-registration-forms/email', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    fullName: values.fullName,
+                    email: values.email,
+                    phone: values.phone,
+                    country: values.country,
+                    occupation: values.occupation,
+                    isClient: values.isClient,
+                    username: values.username,
+                    terms: values.terms,
+                    to: '',
+                  }),
+                })
                 setIsSuccess(true)
               } catch (err) {
                 setIsError(true)
@@ -121,11 +137,18 @@ const WebinarRegistrationForm = ({ data }) => {
                     <Col xs={24} md={12}>
                       <Label>{data.countryPlaceholder}</Label>
                       <Field
+                        as="select"
                         type="country"
                         name="country"
                         placeholder={data.countryPlaceholder}
                         className={`text-field ${errors.country && touched.country && 'has-error'}`}
-                      />
+                      >
+                        {countryCodes.countries.map(({ code, name }) => (
+                          <option key={code} value={name}>
+                            {name}
+                          </option>
+                        ))}
+                      </Field>
                     </Col>
                   </Row>
                   <Row gutter={[16, 16]}>
@@ -199,6 +222,10 @@ const WebinarRegistrationForm = ({ data }) => {
             )}
           </Formik>
         </Row>
+
+        {isSuccess && (
+          <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
+        )}
       </div>
     </Section>
   )
