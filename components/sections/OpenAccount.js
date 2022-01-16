@@ -9,17 +9,18 @@ const OpenAccount = ({ data }) => {
           <h1>{data.Title}</h1>
         </div>
         <StepsContainer>
-          {data.numberedColumn.map((step) => {
-            return (
-              <Step key={step.id}>
-                <div className="number">{step.Number}</div>
-                <div className="step-description">
-                  <h3>{step.Name}</h3>
-                  <p>{step.Description}</p>
-                </div>
-              </Step>
-            )
-          })}
+          {data.numberedColumn &&
+            data.numberedColumn.map((step) => {
+              return (
+                <Step key={step.id}>
+                  <div className="number">{step.Number}</div>
+                  <div className="step-description">
+                    <h3>{step.Name}</h3>
+                    <p>{step.Description}</p>
+                  </div>
+                </Step>
+              )
+            })}
         </StepsContainer>
         <Row justify="center">
           <Col>
