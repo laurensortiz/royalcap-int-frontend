@@ -33,6 +33,12 @@ import Webinars from 'components/sections/Webinars'
 import TradingType from 'components/sections/TradingType'
 import WebinarPricing from 'components/sections/WebinarPricing'
 import WebinarRegistrationForm from 'components/sections/WebinarRegistrationForm'
+import TradingMarketsFeatures from 'components/sections/TradingMarketsFeatures'
+import OpenAccount from './sections/OpenAccount'
+import TradingMarketSupport from './sections/TradingMarketsSupport'
+import TradingMarketsBoxes from './sections/TradingMarketsBoxes'
+import TrustFeatures from './sections/TrustFeatures'
+import MarketsForm from 'components/sections/MarketsForm'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -68,6 +74,12 @@ const sectionComponents = {
   'sections.trading-type': TradingType,
   'sections.webinar-pricing': WebinarPricing,
   'sections.webinar-registration-form': WebinarRegistrationForm,
+  'sections.trading-markets-features': TradingMarketsFeatures,
+  'sections.open-account': OpenAccount,
+  'sections.trading-market-support': TradingMarketSupport,
+  'sections.trading-markets-boxes': TradingMarketsBoxes,
+  'sections.trust-features': TrustFeatures,
+  'sections.markets-form': MarketsForm,
 }
 
 // Display a section individually

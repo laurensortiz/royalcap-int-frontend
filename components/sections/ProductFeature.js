@@ -90,6 +90,7 @@ const Description = styled.p`
 
 const ProductFeatureSection = styled.section`
   margin-top: ${(props) => (props.isHome ? '-100px' : '0')};
+  margin-bottom: ${(props) => (props.isHome ? '50px' : '0')};
   padding-bottom: 50px;
 
   ${(props) =>
