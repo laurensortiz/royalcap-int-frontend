@@ -34,17 +34,18 @@ const TradingMarketsSupport = ({ data }) => {
           <h1>{data.Title}</h1>
         </div>
         <Row>
-          {data.supportColumns.map((item, index) => {
-            return (
-              <Col sm={8} key={index}>
-                <ItemContainer>
-                  <Icon>{icon(item.icon)}</Icon>
-                  <h3>{item.title}</h3>
-                  <p>{item.Description}</p>
-                </ItemContainer>
-              </Col>
-            )
-          })}
+          {data.supportColumns &&
+            data.supportColumns.map((item, index) => {
+              return (
+                <Col sm={8} key={index}>
+                  <ItemContainer>
+                    <Icon>{icon(item.icon)}</Icon>
+                    <h3>{item.title}</h3>
+                    <p>{item.Description}</p>
+                  </ItemContainer>
+                </Col>
+              )
+            })}
         </Row>
       </div>
     </Section>
