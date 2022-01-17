@@ -206,7 +206,7 @@ const WebinarRegistrationForm = ({ data }) => {
                             name="market"
                             value="Inversión de renta fija con un 3.%% de interes mensual"
                           />
-                          Inversión de renta fija con un 3.5% de interes mensual
+                          {data.inversionFieldPlaceholder}
                         </label>
                       </CheckBoxGroup>
                     </Col>
