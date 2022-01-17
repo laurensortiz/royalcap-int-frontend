@@ -4,6 +4,7 @@ import * as yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { Markdown, Row, Col, Alert, Button } from 'library'
 import styled from 'styled-components'
+import countryCodes from 'utils/countries.json'
 
 const ContactForm = ({ data }) => {
   const [loading, setLoading] = useState(false)
@@ -77,6 +78,20 @@ const ContactForm = ({ data }) => {
                     message: values.message,
                   }),
                 })
+
+                await fetchAPI('/contact-forms/email', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    name: values.name,
+                    lastName: values.lastName,
+                    email: values.email,
+                    phone: values.phone,
+                    country: values.country,
+                    category: values.category,
+                    message: values.message,
+                  }),
+                })
+
                 setIsSuccess(true)
               } catch (err) {
                 setIsError(true)
@@ -136,11 +151,18 @@ const ContactForm = ({ data }) => {
                     <Col xs={24} md={12}>
                       <Label>{data.countryPlaceholder}</Label>
                       <Field
+                        as="select"
                         type="country"
                         name="country"
                         placeholder={data.countryPlaceholder}
                         className={`text-field ${errors.country && touched.country && 'has-error'}`}
-                      />
+                      >
+                        {countryCodes.countries.map(({ code, name }) => (
+                          <option key={name} value={name}>
+                            {name}
+                          </option>
+                        ))}
+                      </Field>
                     </Col>
                     <Col xs={24} md={12}>
                       <Label>{data.categoryPlaceholder}</Label>
@@ -193,6 +215,12 @@ const ContactForm = ({ data }) => {
             )}
           </Formik>
         </Row>
+        {isSuccess && (
+          <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
+        )}
+        {isError && (
+          <Alert message={<Markdown>{data.errorMessage}</Markdown>} type="error" showIcon />
+        )}
       </div>
     </Section>
   )
