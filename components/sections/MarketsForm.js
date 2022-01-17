@@ -4,7 +4,7 @@ import * as yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { Markdown, Row, Col, Alert, Button } from 'library'
 import styled from 'styled-components'
-import countryCodes from '../../utils/countries.json'
+import countryCodes from 'utils/countries.json'
 
 const WebinarRegistrationForm = ({ data }) => {
   const [loading, setLoading] = useState(false)
