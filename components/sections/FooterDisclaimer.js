@@ -54,6 +54,18 @@ const RichText = styled(Markdown)`
     font-size: 1em;
     line-height: 1.8em;
   }
+
+  a {
+    padding: 0;
+    background: none;
+    border: 0;
+    height: auto;
+
+    &:hover {
+      background: none;
+      color: #0170c7;
+    }
+  }
 `
 
 export default HomeIntro
