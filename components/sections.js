@@ -39,6 +39,7 @@ import TradingMarketSupport from './sections/TradingMarketsSupport'
 import TradingMarketsBoxes from './sections/TradingMarketsBoxes'
 import TrustFeatures from './sections/TrustFeatures'
 import MarketsForm from 'components/sections/MarketsForm'
+import DocumentsList from 'components/sections/DocumentsList'
 
 // Map Strapi sections to section components
 const sectionComponents = {
@@ -80,6 +81,7 @@ const sectionComponents = {
   'sections.trading-markets-boxes': TradingMarketsBoxes,
   'sections.trust-features': TrustFeatures,
   'sections.markets-form': MarketsForm,
+  'sections.documents-list': DocumentsList,
 }
 
 // Display a section individually

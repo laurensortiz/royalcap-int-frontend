@@ -16,7 +16,11 @@ const BaseLink = styled.a`
 export function Link({ children, isButton = false, ...props }) {
   return (
     <NextLink {...props}>
-      {isButton ? <BaseLink {...props}>{children}</BaseLink> : <a>{children}</a>}
+      {isButton ? (
+        <BaseLink {...props}>{children}</BaseLink>
+      ) : (
+        <a target={props.target || '_self'}>{children}</a>
+      )}
     </NextLink>
   )
 }
