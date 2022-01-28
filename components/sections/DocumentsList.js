@@ -22,7 +22,11 @@ const DocumentsList = ({ data }) => {
         </Row>
         {data.documents.map((document) => {
           return (
-            <Row gutter={[16, 16]} className={handleClassFromOddOrEven(document.id)}>
+            <Row
+              key={document.id}
+              gutter={[16, 16]}
+              className={handleClassFromOddOrEven(document.id)}
+            >
               <Col key={document.id} xs={24}>
                 <Box>
                   <Col sm={20}>
