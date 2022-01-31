@@ -17,6 +17,7 @@ function ColumnContent({ title, children }) {
     </div>
   )
 }
+
 const Footer = ({ footer, logo, contactInfo }) => {
   const [scroll, setScroll] = useState(0)
   const [top, setTop] = useState(0)
@@ -148,6 +149,7 @@ const Footer = ({ footer, logo, contactInfo }) => {
 const ContactDetail = styled.div`
   color: #909aa8;
   margin-top: 25px;
+
   p {
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -160,6 +162,7 @@ const FooterWrapper = styled.div`
   color: #fff;
   background: ${(props) => props.theme.colors.gray010};
   padding-top: 42px;
+
   .footer_middle {
     padding-top: 42px;
   }
@@ -381,6 +384,7 @@ const FooterWrapper = styled.div`
 `
 const Anchor = styled.a`
   color: #fff;
+
   &:focus,
   &:active {
     color: #fff;
