@@ -2,7 +2,7 @@ module.exports = {
   reactStrictMode: false,
   i18n: {
     locales: ['en', 'es', 'ru'],
-    defaultLocale: 'es',
+    defaultLocale: 'en',
     domains: [
       {
         domain: 'royalcap-int.by',
