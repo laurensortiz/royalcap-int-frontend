@@ -56,7 +56,7 @@ const Pricing = ({ data }) => {
             )}
             {plan.btnLink.url && (
               <ButtonContainer>
-                <Link href={plan.btnLink.url} isButton={true}>
+                <Link href={plan.btnLink.url} isButton={true} target={'_blank'}>
                   {plan.btnLink.text}
                 </Link>
               </ButtonContainer>
