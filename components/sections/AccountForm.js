@@ -174,8 +174,8 @@ const AccountForm = ({ data }) => {
                       >
                         <option value=""></option>
                         <option value="micro">Micro</option>
-                        <option value="classic">Classic</option>
-                        <option value="gold">Gold</option>
+                        <option value="standard">Standard</option>
+                        <option value="vip">VIP</option>
                         <option value="metaTrader">MetaTrader 5</option>
                         <option value="metaTrader_demo">MetaTrader 5 - DEMO</option>
                         <option value="rentaFija_3_5">Renta Fija 3.5%</option>
