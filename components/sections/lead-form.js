@@ -141,7 +141,7 @@ const Section = styled.section`
   .text-field {
     padding: 7px 15px;
   }
-  
+
   form.lead-form input {
     color: #000;
   }
