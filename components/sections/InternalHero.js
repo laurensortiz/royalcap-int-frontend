@@ -58,7 +58,6 @@ const HeroContainer = styled.div`
 
   .description table {
     color: #fff;
-
   }
 `
 
