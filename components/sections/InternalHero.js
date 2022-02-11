@@ -55,6 +55,11 @@ const HeroContainer = styled.div`
     background: rgb(0, 0, 0);
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 19%, rgba(0, 0, 0, 0) 84%);
   }
+
+  .description table {
+    color: #fff;
+
+  }
 `
 
 const Header = styled.header`
@@ -65,9 +70,12 @@ const Header = styled.header`
   overflow: hidden;
   color: #fff;
   box-sizing: border-box;
-  height: 400px;
   width: 100%;
   position: relative;
+
+  .container {
+    top: 55%;
+  }
 
   h1 {
     color: #333;

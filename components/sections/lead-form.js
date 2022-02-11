@@ -83,7 +83,7 @@ const LeadForm = ({ data }) => {
               }}
             >
               {({ errors, touched, isSubmitting }) => (
-                <Form>
+                <Form className="lead-form">
                   <Row gutter={[16, 16]} align={'middle'}>
                     <Col xs={24} md={7}>
                       <Field
@@ -140,6 +140,10 @@ const Section = styled.section`
 
   .text-field {
     padding: 7px 15px;
+  }
+  
+  form.lead-form input {
+    color: #000;
   }
 
   @media screen and (min-width: ${(props) => props.theme.breakpoints.m}) {
