@@ -17,6 +17,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
 
   const loginButton = globalLinks.find((link) => link.slug === 'login')
   const createAccountButton = globalLinks.find((link) => link.slug === 'createAccount')
+  const loginWebtraderButton = globalLinks.find((link) => link.slug === 'loginWebtrader')
 
   const isRussianActive = getFeatureFlag(featureFlag, 'russianLang')
 
@@ -53,16 +54,27 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
               <div className="flex">
                 {/* CTA button on desktop */}
                 <ActionContainer>
-                  {loginButton && (
-                    <Link
-                      href={loginButton.url}
-                      target={loginButton.newTab ? '_blank' : ''}
-                      isButton={true}
-                    >
-                      {loginButton.text}
-                    </Link>
-                  )}
-
+                  <LoginButtons>
+                    {loginButton && (
+                      <Link
+                        href={loginButton.url}
+                        target={loginButton.newTab ? '_blank' : ''}
+                        isButton={true}
+                        className="mb-2"
+                      >
+                        {loginButton.text}
+                      </Link>
+                    )}
+                    {loginWebtraderButton && (
+                      <Link
+                        href={loginWebtraderButton.url}
+                        target={loginWebtraderButton.newTab ? '_blank' : ''}
+                        isButton={true}
+                      >
+                        {loginWebtraderButton.text}
+                      </Link>
+                    )}
+                  </LoginButtons>
                   {createAccountButton && (
                     <Link href={createAccountButton.url} isButton={true} ghost>
                       {createAccountButton.text}
@@ -160,6 +172,10 @@ const NavList = styled.div`
 
 const Logo = styled.div`
   float: left;
+`
+const LoginButtons = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 export default Navbar
