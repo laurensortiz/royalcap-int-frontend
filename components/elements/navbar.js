@@ -26,7 +26,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
       {/* The actual navbar */}
       <MenuWrapper>
         <nav className="border-gray-200 border-b-2 py-6 sm:py-2">
-          <div className="container-fluid flex flex-row items-center justify-between">
+          <div className="container-fluid container-navbar flex flex-row items-center justify-between">
             {/* Content aligned to the left */}
             <div className="flex flex-row items-center">
               <Logo>
@@ -54,13 +54,14 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
               <div className="flex">
                 {/* CTA button on desktop */}
                 <ActionContainer>
-                  <LoginButtons>
+                  {/* <LoginButtons> */}
                     {loginButton && (
                       <Link
                         href={loginButton.url}
                         target={loginButton.newTab ? '_blank' : ''}
                         isButton={true}
-                        className="mb-2"
+                        ghostPrimary
+                        // className="mb-2"
                       >
                         {loginButton.text}
                       </Link>
@@ -70,11 +71,12 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
                         href={loginWebtraderButton.url}
                         target={loginWebtraderButton.newTab ? '_blank' : ''}
                         isButton={true}
+                        ghostPrimary
                       >
                         {loginWebtraderButton.text}
                       </Link>
                     )}
-                  </LoginButtons>
+                  {/* </LoginButtons> */}
                   {createAccountButton && (
                     <Link href={createAccountButton.url} isButton={true} ghost>
                       {createAccountButton.text}

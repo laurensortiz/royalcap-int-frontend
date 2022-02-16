@@ -5343,6 +5343,10 @@ const GlobalStyle = createGlobalStyle`${() => css`
     max-width: 1140px;
   }
 
+  .container-navbar {
+    max-width: 1280px;
+  }
+
   .image-style-align-center {
    img {
      margin: auto;
