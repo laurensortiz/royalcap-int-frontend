@@ -55,27 +55,27 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
                 {/* CTA button on desktop */}
                 <ActionContainer>
                   {/* <LoginButtons> */}
-                    {loginButton && (
-                      <Link
-                        href={loginButton.url}
-                        target={loginButton.newTab ? '_blank' : ''}
-                        isButton={true}
-                        ghostPrimary
-                        // className="mb-2"
-                      >
-                        {loginButton.text}
-                      </Link>
-                    )}
-                    {loginWebtraderButton && (
-                      <Link
-                        href={loginWebtraderButton.url}
-                        target={loginWebtraderButton.newTab ? '_blank' : ''}
-                        isButton={true}
-                        ghostPrimary
-                      >
-                        {loginWebtraderButton.text}
-                      </Link>
-                    )}
+                  {loginButton && (
+                    <Link
+                      href={loginButton.url}
+                      target={loginButton.newTab ? '_blank' : ''}
+                      isButton={true}
+                      ghostPrimary
+                      // className="mb-2"
+                    >
+                      {loginButton.text}
+                    </Link>
+                  )}
+                  {loginWebtraderButton && (
+                    <Link
+                      href={loginWebtraderButton.url}
+                      target={loginWebtraderButton.newTab ? '_blank' : ''}
+                      isButton={true}
+                      ghostPrimary
+                    >
+                      {loginWebtraderButton.text}
+                    </Link>
+                  )}
                   {/* </LoginButtons> */}
                   {createAccountButton && (
                     <Link href={createAccountButton.url} isButton={true} ghost>
