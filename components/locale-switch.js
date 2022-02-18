@@ -78,18 +78,16 @@ const LocaleSwitch = ({ pageContext }) => {
         >
           {pageContext.localizedPaths &&
             pageContext.localizedPaths.map(({ href, locale }) => {
-              if (locale !== 'ru') {
-                return (
-                  <Link href={href} key={locale} locale={locale} role="option" passHref>
-                    <p
-                      onClick={() => handleLocaleChange(locale)}
-                      className="capitalize hover:bg-primary-50 hover:text-primary-600  cursor-pointer p-2 rounded-md text-center hover:text-primary-600"
-                    >
-                      {locale}
-                    </p>
-                  </Link>
-                )
-              }
+              return (
+                <Link href={href} key={locale} locale={locale} role="option" passHref>
+                  <p
+                    onClick={() => handleLocaleChange(locale)}
+                    className="capitalize hover:bg-primary-50 hover:text-primary-600  cursor-pointer p-2 rounded-md text-center hover:text-primary-600"
+                  >
+                    {locale}
+                  </p>
+                </Link>
+              )
             })}
         </div>
       </div>
