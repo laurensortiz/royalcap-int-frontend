@@ -5289,6 +5289,10 @@ const GlobalStyle = createGlobalStyle`${() => css`
     }
   }
 
+  section.transparent {
+    background-color: transparent;
+  }
+
   section.black,
   .section.black {
     background-color: ${(props) => props.theme.colors.gray101};

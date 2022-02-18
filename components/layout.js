@@ -22,8 +22,6 @@ const Layout = ({ children, global, pageContext }) => {
     featureFlag,
   } = global
 
-  const isRussianActive = getFeatureFlag(featureFlag, 'russianLang')
-
   return (
     <div className="flex flex-col justify-between min-h-screen">
       <NotificationDisclaimer data={notificationDisclaimer} />
@@ -44,16 +42,10 @@ const Layout = ({ children, global, pageContext }) => {
         <div>{children}</div>
       </div>
       {/* Aligned to the bottom */}
-      {!isRussianActive.isActive && leadForm && <LeadForm data={leadForm} />}
+      <LeadForm data={leadForm} />
       {notification && <NotificationAlert data={notification} />}
-
-      {!isRussianActive.isActive && footerDisclaimer && (
-        <FooterDisclaimer data={footerDisclaimer} />
-      )}
-
-      {!isRussianActive.isActive && (
-        <Footer logo={navbar.logo} footer={footer} contactInfo={global.contactInfo} />
-      )}
+      <FooterDisclaimer data={footerDisclaimer} />
+      <Footer logo={navbar.logo} footer={footer} contactInfo={global.contactInfo} />{' '}
     </div>
   )
 }
