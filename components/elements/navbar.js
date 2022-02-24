@@ -111,6 +111,7 @@ const Navbar = ({ navbar, pageContext, logo, globalLinks, featureFlag }) => {
         {!isRussianActive.isActive && mobileMenuIsShown && (
           <MobileNavMenu
             loginButton={loginButton}
+            loginWebtraderButton={loginWebtraderButton}
             createAccountButton={createAccountButton}
             navbar={navbar}
             closeSelf={() => setMobileMenuIsShown(false)}

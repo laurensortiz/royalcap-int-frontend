@@ -10,7 +10,13 @@ import { Link } from '../../library'
 import React from 'react'
 import styled from 'styled-components'
 
-const MobileNavMenu = ({ navbar, closeSelf, loginButton, createAccountButton }) => {
+const MobileNavMenu = ({
+  navbar,
+  closeSelf,
+  loginButton,
+  loginWebtraderButton,
+  createAccountButton,
+}) => {
   // Prevent window scroll while mobile nav menu is open
   useLockBodyScroll()
 
@@ -51,6 +57,17 @@ const MobileNavMenu = ({ navbar, closeSelf, loginButton, createAccountButton }) 
                 onClick={closeSelf}
               >
                 {loginButton.text}
+              </Link>
+            )}
+
+            {loginWebtraderButton && (
+              <Link
+                href={loginWebtraderButton.url}
+                target={loginWebtraderButton.newTab ? '_blank' : ''}
+                isButton={true}
+                onClick={closeSelf}
+              >
+                {loginWebtraderButton.text}
               </Link>
             )}
 
