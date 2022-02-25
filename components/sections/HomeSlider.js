@@ -4,6 +4,8 @@ import { Link, Markdown } from 'library'
 import SlickSlider from '../UI/Carousel/slick'
 import styled from 'styled-components'
 import MediaPath from 'helpers/mediaPath'
+// import Video from '../elements/video'
+import NextImage from '../elements/image'
 
 const NextArrow = ({ className, onClick }) => {
   return (
@@ -104,6 +106,10 @@ const Slider = ({ data }) => {
                                 </LinkWrapper>
                               )}
                             </div>
+                          </div>
+                          <div className="col-md-4 col-sm-12">
+                            {console.log(data.HomeVideoURL)}
+                            <NextImage media={data.HomeVideoURL} className="w-full h-auto" />
                           </div>
                         </div>
                       </div>
