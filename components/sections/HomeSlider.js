@@ -107,9 +107,9 @@ const Slider = ({ data }) => {
                               )}
                             </div>
                           </div>
-                          <div className="col-md-4 col-sm-12">
+                          {/* <div className="col-md-4 col-sm-12">
                             <NextImage media={data.HomeVideoURL} className="w-full h-auto" />
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
