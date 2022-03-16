@@ -41,7 +41,9 @@ const Pricing = ({ data }) => {
               {plan.description}
             </p>
             <p className="text-3xl mt-4">
-              {plan.price === 0 ? 'Free ' : `${Currency.format(plan.price)} `}
+              <PriceText>
+                {plan.price === 0 ? 'Free ' : `${Currency.format(plan.price)} `}
+              </PriceText>
               <span className="text-base font-medium">{plan.pricePeriod}</span>
             </p>
             {plan.features.length > 0 && (
@@ -67,6 +69,10 @@ const Pricing = ({ data }) => {
     </div>
   )
 }
+
+const PriceText = styled.span`
+  font-size: 1.7rem;
+`
 
 const FeatureList = styled.ul`
   min-height: 300px;
