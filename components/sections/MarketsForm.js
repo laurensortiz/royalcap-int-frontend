@@ -65,9 +65,6 @@ const WebinarRegistrationForm = ({ data }) => {
                   }}
                   validationSchema={ContactSchema}
                   onSubmit={async (values, { setSubmitting, setErrors }) => {
-                    console.log('[=====  values  =====>')
-                    console.log(values)
-                    console.log('<=====  /values  =====]')
                     setLoading(true)
 
                     try {
@@ -196,7 +193,7 @@ const WebinarRegistrationForm = ({ data }) => {
                           </Col>
                         </Row>
                         <Row>
-                          <Col>
+                          <Col style={{ textAlign: 'left' }}>
                             <div id="checkbox-group">
                               <Label>{data.marketPlaceholder}</Label>
                             </div>
@@ -291,14 +288,16 @@ const Header = styled.header`
   background-size: cover;
   //background-attachment: fixed;
   background-position: center 30%;
-  overflow: hidden;
+
   color: #fff;
   box-sizing: border-box;
   width: 100%;
   position: relative;
+  height: auto;
 
   .container {
     top: 100%;
+    transform: none;
   }
 
   h1 {
