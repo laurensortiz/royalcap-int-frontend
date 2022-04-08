@@ -5,6 +5,11 @@ module.exports = {
     defaultLocale: 'en',
     domains: [
       {
+        domain: 'prueba.royalcap-int.by',
+        defaultLocale: 'ru',
+        http: true,
+      },
+      {
         domain: 'royalcap-int.by',
         defaultLocale: 'ru',
         http: true,
