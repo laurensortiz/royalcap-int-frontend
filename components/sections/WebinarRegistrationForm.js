@@ -101,7 +101,7 @@ const WebinarRegistrationForm = ({ data }) => {
           >
             {({ errors, touched, isSubmitting }) => (
               <FormWrapper xs={24} sm={18}>
-                <Form>
+                <MainForm>
                   <Row gutter={[16, 16]}>
                     <Col xs={24} md={12}>
                       <Label>{data.fullNamePlaceholder}</Label>
@@ -217,7 +217,7 @@ const WebinarRegistrationForm = ({ data }) => {
                       </Button>
                     </Col>
                   </Row>
-                </Form>
+                </MainForm>
               </FormWrapper>
             )}
           </Formik>
@@ -232,6 +232,13 @@ const WebinarRegistrationForm = ({ data }) => {
 }
 
 const Section = styled.section``
+
+const MainForm = styled(Form)`
+  input,
+  select {
+    color: #5a5a5a;
+  }
+`
 
 const FormWrapper = styled(Col)`
   .ant-row {
