@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { animateScroll } from 'react-scroll'
 import { useRouter } from 'next/router'
-import PropTypes from 'prop-types'
+import PropTypes, { symbol } from 'prop-types'
 import { linkPropTypes, mediaPropTypes } from 'utils/types'
 import styled from 'styled-components'
 import { a } from 'react-router-dom'
 import NextImage from 'components/elements/image'
 import CustomLink from 'components/elements/custom-link'
+import Image from 'next/image'
 import { Markdown } from 'library'
 
 function ColumnContent({ title, children }) {
@@ -103,6 +104,13 @@ const Footer = ({ footer, logo, contactInfo }) => {
             </div>
 
             {/* SOCIAL ICON */}
+
+            <div className="footer_social">
+              <ImageBrands>
+                <Image src={'https://assets.royalcap-int.com/images/brands.jpeg'} layout="fill" />
+              </ImageBrands>
+            </div>
+
             <div className="footer_social" style={{ display: 'none' }}>
               <ul className="footer_social_icons">
                 <li>
@@ -145,6 +153,13 @@ const Footer = ({ footer, logo, contactInfo }) => {
     </FooterWrapper>
   )
 }
+
+const ImageBrands = styled.div`
+  width: 400px;
+  display: block;
+  position: relative;
+  height: 40px;
+`
 
 const ContactDetail = styled.div`
   color: #909aa8;
