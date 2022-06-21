@@ -24,4 +24,19 @@ module.exports = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'my.royalcap-int.com',
+          },
+        ],
+        permanent: false,
+        destination: '/my-royal',
+      },
+    ]
+  },
 }
