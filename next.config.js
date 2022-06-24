@@ -48,6 +48,28 @@ module.exports = {
         permanent: false,
         destination: '/my-royal',
       },
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'me.royalcap-int.com/en/login',
+          },
+        ],
+        permanent: false,
+        destination: '/my-royal',
+      },
+      {
+        source: '/',
+        has: [
+          {
+            type: 'host',
+            value: 'me.royalcap-int.com/es/login',
+          },
+        ],
+        permanent: false,
+        destination: '/my-royal',
+      },
     ]
   },
 }
