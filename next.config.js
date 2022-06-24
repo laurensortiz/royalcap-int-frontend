@@ -53,7 +53,7 @@ module.exports = {
         has: [
           {
             type: 'host',
-            value: 'me.royalcap-int.com',
+            value: 'my.royalcap-int.com',
           },
         ],
         permanent: false,
@@ -64,7 +64,7 @@ module.exports = {
         has: [
           {
             type: 'host',
-            value: 'me.royalcap-int.com',
+            value: 'my.royalcap-int.com',
           },
         ],
         permanent: false,
