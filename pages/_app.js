@@ -22,7 +22,6 @@ import ScrollToTop from 'helpers/ScrollToTop'
 const MyApp = ({ Component, pageProps }) => {
   // Extract the data we need
   const { global } = pageProps
-
   if (global == null) {
     return <ErrorPage statusCode={404} />
   }
