@@ -27,6 +27,11 @@ module.exports = {
   async redirects() {
     return [
       {
+        source: '/es/login',
+        permanent: false,
+        destination: '/my-royal',
+      },
+      {
         source: '/',
         has: [
           {
@@ -50,17 +55,6 @@ module.exports = {
       },
       {
         source: '/en/login',
-        has: [
-          {
-            type: 'host',
-            value: 'my.royalcap-int.com',
-          },
-        ],
-        permanent: false,
-        destination: '/my-royal',
-      },
-      {
-        source: '/es/login',
         has: [
           {
             type: 'host',
