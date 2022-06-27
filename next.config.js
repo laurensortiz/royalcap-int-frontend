@@ -32,6 +32,16 @@ module.exports = {
         destination: '/my-royal',
       },
       {
+        source: '/es/register',
+        permanent: false,
+        destination: '/my-royal',
+      },
+      {
+        source: '/en/register',
+        permanent: false,
+        destination: '/my-royal',
+      },
+      {
         source: '/',
         has: [
           {
