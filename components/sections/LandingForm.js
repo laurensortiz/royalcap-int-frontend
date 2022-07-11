@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { fetchAPI } from 'utils/api'
 import * as yup from 'yup'
 import { Formik, Form, Field } from 'formik'
@@ -22,7 +22,7 @@ const LandingForm = ({ data }) => {
 
   return (
     <Section
-      className={`main-section ${data.bgClass || ''}`}
+      className={`main-section ${data.bgClass || 'black'}`}
       bgSection={MediaPath(data.bgImage && data.bgImage.url)}
     >
       <div className="container">
@@ -44,10 +44,18 @@ const LandingForm = ({ data }) => {
           </Col>
         </Row>
         {isSuccess && (
-          <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
+          <AlertContainer
+            message={<Markdown>{data.successMessage}</Markdown>}
+            type="success"
+            showIcon
+          />
         )}
         {isError && (
-          <Alert message={<Markdown>{data.errorMessage}</Markdown>} type="error" showIcon />
+          <AlertContainer
+            message={<Markdown>{data.errorMessage}</Markdown>}
+            type="error"
+            showIcon
+          />
         )}
 
         <Row justify="center">
@@ -185,10 +193,18 @@ const LandingForm = ({ data }) => {
           </Formik>
         </Row>
         {isSuccess && (
-          <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
+          <AlertContainer
+            message={<Markdown>{data.successMessage}</Markdown>}
+            type="success"
+            showIcon
+          />
         )}
         {isError && (
-          <Alert message={<Markdown>{data.errorMessage}</Markdown>} type="error" showIcon />
+          <AlertContainer
+            message={<Markdown>{data.errorMessage}</Markdown>}
+            type="error"
+            showIcon
+          />
         )}
       </div>
     </Section>
@@ -219,9 +235,10 @@ const Section = styled.section`
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.8);
             top: 0;
             left: 0;
+            z-index: 1;
           }
         }
       `}
@@ -229,14 +246,26 @@ const Section = styled.section`
 `
 
 const FormWrapper = styled(Col)`
+  position: relative;
+  z-index: 2;
+
   .ant-row {
     margin: 10px 0;
+  }
+
+  .text-field {
+    color: #000;
   }
 `
 
 const Label = styled.label`
   display: block;
   padding: 10px 0;
+`
+
+const AlertContainer = styled(Alert)`
+  position: relative;
+  z-index: 2;
 `
 
 export default LandingForm
