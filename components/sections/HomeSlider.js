@@ -4,8 +4,6 @@ import { Link, Markdown } from 'library'
 import SlickSlider from '../UI/Carousel/slick'
 import styled from 'styled-components'
 import MediaPath from 'helpers/mediaPath'
-// import Video from '../elements/video'
-import NextImage from '../elements/image'
 
 const NextArrow = ({ className, onClick }) => {
   return (
@@ -95,8 +93,8 @@ const Slider = ({ data }) => {
                       <div className="container">
                         <div className="row">
                           <div className="col-md-8 col-sm-12">
-                            <RichText>{item.title}</RichText>
-                            <RichText>{item.description}</RichText>
+                            <RichText>{item.title || ''}</RichText>
+                            <RichText>{item.description || ''}</RichText>
                             <div className="">
                               {item.btnLink && (
                                 <LinkWrapper>
