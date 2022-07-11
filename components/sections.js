@@ -41,6 +41,7 @@ import TrustFeatures from './sections/TrustFeatures'
 import MarketsForm from 'components/sections/MarketsForm'
 import DocumentsList from 'components/sections/DocumentsList'
 import Accordion from 'components/sections/Accordion'
+import LandingForm from 'components/sections/LandingForm'
 // import Banners from 'components/sections/Banners'
 
 // Map Strapi sections to section components
@@ -85,6 +86,7 @@ const sectionComponents = {
   'sections.markets-form': MarketsForm,
   'sections.documents-list': DocumentsList,
   'sections.accordion': Accordion,
+  'sections.landing-form': LandingForm,
   // 'sections.banners': Banners,
 }
 
