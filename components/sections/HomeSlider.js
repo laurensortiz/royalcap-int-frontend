@@ -69,14 +69,15 @@ const Slider = ({ data }) => {
       <div className="slider_home">
         <SlickSlider settings={settings}>
           {data.slider.map((item) => {
-            const isSliderImage = item?.bg?.mime === 'image/jpeg'
+            const isVideoSlider = item?.bg?.mime === 'video/mp4'
+            const hasPoster = item?.videoBgPoster.url != ''
             return (
               <div className={`slider-${item.id}`} key={item.id}>
                 <SingleSlider
                   className="single_slider"
-                  imagePath={MediaPath(isSliderImage ? item.bg.url : null)}
+                  imagePath={MediaPath(hasPoster ? item.videoBgPoster.url : null)}
                 >
-                  {!isSliderImage && (
+                  {isVideoSlider && (
                     <VideoSlider
                       src={MediaPath(item.bg.url)}
                       poster=""
@@ -138,9 +139,40 @@ const LinkWrapper = styled.div`
 `
 
 const SingleSlider = styled.div`
-  background: url(${(props) => props.imagePath}) no-repeat;
-  background-size: cover;
-  text-align: center;
+  @media screen and (max-width: ${(props) => props.theme.breakpoints.m}) {
+    background: url(${(props) => props.imagePath}) no-repeat;
+    background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
+    background-size: cover;
+    background-attachment: fixed;
+
+    video {
+      display: none;
+    }
+
+    ${(props) =>
+      props.bgSection &&
+      css`
+        .container {
+          color: #fff;
+
+          h2,
+          h3 {
+            color: #fff;
+          }
+
+          &:before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            top: 0;
+            left: 0;
+            z-index: 1;
+          }
+        }
+      `}
+  }
 
   .slider_item_tb {
     background-color: rgba(16, 19, 27, 0.6);
@@ -163,7 +195,7 @@ const VideoSlider = styled.video`
   top: 0;
   left: 0;
   background-size: cover;
-  opacity: 0.7;
+  opacity: 0.9;
   z-index: 0;
   background-color: #000;
 `
