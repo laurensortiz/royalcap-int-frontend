@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { fetchAPI } from 'utils/api'
 import * as yup from 'yup'
-import { Formik, Form, Field } from 'formik'
+import Link from 'next/link'
+
 import { Markdown, Row, Col, Alert, Button } from 'library'
 import styled, { css } from 'styled-components'
 import { ContainerOutlined } from '@ant-design/icons'
@@ -25,13 +25,6 @@ const LeadForm = ({ data }) => {
       id={'newsletter'}
     >
       <div className="container">
-        {isSuccess && (
-          <Alert message={<Markdown>{data.successMessage}</Markdown>} type="success" showIcon />
-        )}
-        {isError && (
-          <Alert message={<Markdown>{data.errorMessage}</Markdown>} type="error" showIcon />
-        )}
-
         <Row gutter={[16, 16]} justify={'space-between'} align={'middle'}>
           <Col xs={24} md={24}>
             <div className="about_list">
@@ -48,91 +41,37 @@ const LeadForm = ({ data }) => {
               )}
             </div>
           </Col>
-          <Col xs={24} sm={24}>
-            <Formik
-              initialValues={{
-                email: '',
-                name: '',
-                lastName: '',
-              }}
-              validationSchema={ContactSchema}
-              onSubmit={async (values, { setSubmitting, setErrors }) => {
-                setLoading(true)
 
-                try {
-                  setErrors({ api: null })
-                  setIsSuccess(false)
-                  setIsError(false)
-
-                  await fetchAPI('/lead-form-submissions', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                      email: values.email,
-                      name: values.name,
-                      lastName: values.lastName,
-                    }),
-                  })
-                  setIsSuccess(true)
-                } catch (err) {
-                  setIsError(true)
-                  setErrors({ api: err.message })
-                }
-
-                setLoading(false)
-                setSubmitting(false)
-              }}
+          <Col xs={24} md={24} style={{ textAlign: 'center' }}>
+            <Link
+              href="https://newsletters.tradingcentral.com/royalcapital/signup_widget.aspx"
+              passHref={true}
             >
-              {({ errors, touched, isSubmitting }) => (
-                <Form className="lead-form">
-                  <Row gutter={[16, 16]} align={'middle'}>
-                    <Col xs={24} md={7}>
-                      <Field
-                        type="name"
-                        name="name"
-                        placeholder={data.namePlaceholder}
-                        className={`text-field ${errors.name && touched.name && 'has-error'}`}
-                      />
-                    </Col>
-                    <Col xs={24} md={7}>
-                      <Field
-                        type="lastName"
-                        name="lastName"
-                        placeholder={data.lastNamePlaceholder}
-                        className={`text-field ${
-                          errors.lastName && touched.lastName && 'has-error'
-                        }`}
-                      />
-                    </Col>
-                    <Col xs={24} md={7}>
-                      <Field
-                        type="email"
-                        name="email"
-                        placeholder={data.emailPlaceholder}
-                        className={`text-field ${errors.email && touched.email && 'has-error'}`}
-                      />
-                    </Col>
-                    <Col xs={24} md={3}>
-                      <Button
-                        type="submit"
-                        htmlType="submit"
-                        button={data.submitButton}
-                        disabled={isSubmitting || isSuccess}
-                        loading={loading}
-                        icon={<ContainerOutlined />}
-                      >
-                        {data.submitButton.text}
-                      </Button>
-                    </Col>
-                  </Row>
-                </Form>
-              )}
-            </Formik>
+              <a target="_blank" rel="noreferrer">
+                <LeadButton
+                  type="primary"
+                  loading={loading}
+                  icon={<ContainerOutlined />}
+                  onClick={() => {
+                    console.log('ds')
+                  }}
+                  size={'large'}
+                >
+                  {data.submitButton.text}
+                </LeadButton>
+              </a>
+            </Link>
           </Col>
         </Row>
       </div>
     </Section>
   )
 }
+
+const LeadButton = styled(Button)`
+  width: 300px;
+  height: 60px;
+`
 
 const Section = styled.section`
   padding-top: 15px;

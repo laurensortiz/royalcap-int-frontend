@@ -80,16 +80,25 @@ const SingleSlider = styled.div`
   text-align: center;
   position: relative;
   width: 100%;
-  height: 600px;
+  height: auto;
+  min-height: 600px;
   color: #fff;
+
+  @media screen and (min-width: ${(props) => props.theme.breakpoints.m}) {
+    height: 600px;
+  }
 
   .slider_data_tb {
     background-color: rgba(0, 0, 0, 0.4);
-    position: absolute;
+    position: relative;
     z-index: 1;
     width: 100%;
     height: 100%;
     padding: 30px;
+
+    @media screen and (min-width: ${(props) => props.theme.breakpoints.m}) {
+      position: absolute;
+    }
   }
 
   h1 {
@@ -117,10 +126,12 @@ const LinkWrapper = styled.div`
 const RichText = styled(Markdown)`
   text-align: left;
   margin: 50px 0;
+
   span,
   strong {
     color: ${(props) => props.theme.colors.yellowb89};
   }
+
   p {
     font-size: 1rem;
     line-height: 1.8em;
