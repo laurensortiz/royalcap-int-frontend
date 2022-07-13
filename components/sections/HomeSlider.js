@@ -139,11 +139,12 @@ const LinkWrapper = styled.div`
 `
 
 const SingleSlider = styled.div`
+  position: relative;
   @media screen and (max-width: ${(props) => props.theme.breakpoints.m}) {
-    background: url(${(props) => props.imagePath}) no-repeat;
+    background-image: url(${(props) => props.imagePath});
     background-position: top ${(props) => (props.bgPosition === 'left' ? 'right' : 'left')};
     background-size: cover;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
 
     video {
       display: none;
@@ -165,7 +166,7 @@ const SingleSlider = styled.div`
             position: absolute;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.9);
             top: 0;
             left: 0;
             z-index: 1;
@@ -178,6 +179,7 @@ const SingleSlider = styled.div`
     background-color: rgba(16, 19, 27, 0.6);
     position: absolute;
     z-index: 1;
+    height: 100%;
   }
 
   h2 {
