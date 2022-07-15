@@ -76,4 +76,5 @@ module.exports = {
       },
     ]
   },
+  rewrites: () => [{ source: '/System/Payments/Return/Monetix', destination: '/api/monetix' }],
 }
