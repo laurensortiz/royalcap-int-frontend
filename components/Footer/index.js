@@ -45,14 +45,14 @@ const Footer = ({ footer, logo, contactInfo }) => {
       <div className="container">
         <div className="row">
           {/*  Start:About  */}
-          <div className="col-lg-3 col-sm-12">
+          <div className="col-lg-12 col-sm-12">
             <NextImage width="228" height="52" media={logo} />
             <ContactDetail>
               <Markdown>{contactInfo}</Markdown>
             </ContactDetail>
           </div>
           {/*  End:About  */}
-          <div className="col-lg-9 col-sm-12">
+          <div className="col-lg-12 col-sm-12">
             <div className="row">
               {/*  Start:Quick a  */}
               {footer.columns.map((column) => {
