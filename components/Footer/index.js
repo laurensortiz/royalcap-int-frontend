@@ -105,11 +105,11 @@ const Footer = ({ footer, logo, contactInfo }) => {
 
             {/* SOCIAL ICON */}
 
-            <div className="footer_social">
+            {/*<div className="footer_social">
               <ImageBrands>
                 <Image src={'https://assets.royalcap-int.com/images/brands.jpeg'} layout="fill" />
               </ImageBrands>
-            </div>
+            </div>*/}
 
             <div className="footer_social" style={{ display: 'none' }}>
               <ul className="footer_social_icons">
